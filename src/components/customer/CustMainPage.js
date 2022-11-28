@@ -22,8 +22,8 @@ const CustMainPage = (props) => {
 
         <div className="CustOptions">
       
-          <div class = "CustomerViewBtn" id = "FindRestaraunt" onClick={() => {navigate("/PublicMenu")}}><CustomerViewBtn Name = "Find Restaraunt"/></div>
-          <div class = "CustomerViewBtn" id = "ViewMenu" onClick={() => {navigate("/PublicMenu")}}><CustomerViewBtn Name = "View Menu"/></div>
+          <div class = "CustomerViewBtn" id = "FindRestaraunt" onClick={() => {navigate("/CustMainPage/PublicMenu")}}><CustomerViewBtn Name = "Find Restaraunt"/></div>
+          <div class = "CustomerViewBtn" id = "ViewMenu" onClick={() => {navigate("/CustMainPage/PublicMenu")}}><CustomerViewBtn Name = "View Menu"/></div>
 
         </div>
 
