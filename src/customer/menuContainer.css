@@ -4,6 +4,7 @@
     width: 100%;
     overflow: 'auto';
     border: 20px solid #8b0909;
+
   }
 
   .menuContainer .options {
@@ -23,7 +24,7 @@
   }
   
   .options .optionBtn {
-    text-decoration: none;
+  
     font-size: 14px;
     font-weight: bold;
     background-color: #8b0909;
@@ -88,9 +89,7 @@
     color: #a5a4a9;
   }
   
-  .menuContainer .menuItems  main .details .selectBtn {
-    padding: 5px 20px;
-  }
+
   
   .menuContainer .menuItems  main .details .selectBtn .btn {
     text-decoration: none;
@@ -102,6 +101,13 @@
     font-weight: 600;
     cursor: pointer;
     border: none;
+    padding: 5px 20px;
+    
+  }
+
+    .menuContainer .menuItems  main .details .selectBtn {
+    padding: 5px 20px;
+    
   }
   
   .menuContainer .menuItems  main .details .selectBtn .btn:hover {

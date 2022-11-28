@@ -13,12 +13,9 @@ function header(props) {
     <div className="header">
 
         <img src={Logo} className="img" width="25%" />
-
-        <div className="addToCart">
-          <button onClick={() => props.goBack()}>Back</button>;
-        </div>
         
         <div className="options">
+                <button className="addToCart" onClick={() => props.goBack()}>Back</button>;
                 <button className="optionBtn" onClick={() => props.callback("entrees")}> Entrees </button>
                 <button className="optionBtn" onClick={() => props.callback("sides")}> Sides </button>
                 <button className="optionBtn" onClick={() => props.callback("apps")}> Appetizers </button>

@@ -36,6 +36,8 @@ const PageRouting = () => {
             <Route path= "/Manager/employee" element={<Employee/>}/>
             <Route path= "/Manager/accessibility" element={<Accessibility/>}/>
 
+            <Route path = "/CustMainPage" element = {<CustMainPage />}></Route>
+
             <Route path = "/CustomerMenu" element = {<CustomerViewContainer />}></Route>
             <Route path = "/CustomerMenu/Checkout" element = {<CustomerCheckout />}></Route>
             <Route path=  "/CustomerMenu/entrees" element={<Entree />} />
