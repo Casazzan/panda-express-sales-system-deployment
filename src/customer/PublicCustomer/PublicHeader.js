@@ -1,12 +1,16 @@
 import React from "react";
-import Logo from './pandaLogo.png';
-import "./header.css";
-import "./menuContainer.css";
+import Logo from '../pandaLogo.png';
+import "../header.css";
+import "../menuContainer.css";
+import { useNavigate } from 'react-router-dom';
 //import { useNavigate, Link } from 'react-router-dom';
 
 
 
-function header(props) {
+
+const PublicHeader = (props) => {
+
+  let navigate = useNavigate();
 
   return (
     <>
@@ -15,7 +19,7 @@ function header(props) {
         <img src={Logo} className="img" width="25%" />
         
         <div className="options">
-                <button className="addToCart" onClick={() => props.goBack()}>Back</button>;
+                <button className="addToCart" onClick={() => {navigate("/CustMainPage")}}> Back </button>
                 <button className="optionBtn" onClick={() => props.callback("entrees")}> Entrees </button>
                 <button className="optionBtn" onClick={() => props.callback("sides")}> Sides </button>
                 <button className="optionBtn" onClick={() => props.callback("apps")}> Appetizers </button>
@@ -26,4 +30,4 @@ function header(props) {
   );
 }
 
-export default header;
+export default PublicHeader;
