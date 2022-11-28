@@ -1,5 +1,11 @@
 /* Customer Landing (CustMainPage + CustomerViewBtn) */
 
+.CustMainPage {
+    height: 100%;
+    background-color: #8b0909;
+    color: white;
+}
+
 .CustHeader{
     background-color:  black;
     position: relative;

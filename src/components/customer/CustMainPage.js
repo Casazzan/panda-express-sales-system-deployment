@@ -5,6 +5,7 @@ import "./CustMainPage.css";
 import CustomerViewBtn from "../CustomerViewBtn";
 
 import Logo from './pandaLogo.png';
+import Text from 'react-text';
 
 
 const CustMainPage = (props) => {
@@ -13,17 +14,23 @@ const CustMainPage = (props) => {
 
   return (
 
-    <div className="CustHeader">
+    <div className="CustMainPage">
 
-      <img src={Logo} className="img" width="25%" />
+      <div className="CustHeader">
 
-      <div className="CustOptions">
+        <img src={Logo} className="img" width="25%" />
+
+        <div className="CustOptions">
       
-      <div class = "CustomerViewBtn" id = "FindRestaraunt" onClick={() => {navigate("/CustomerMenu")}}><CustomerViewBtn Name = "Find Restaraunt"/></div>
-      <div class = "CustomerViewBtn" id = "ViewMenu" onClick={() => {navigate("/CustomerMenu")}}><CustomerViewBtn Name = "View Menu"/></div>
-      <div class = "CustomerViewBtn" id = "StartOrder"onClick={() => {navigate("/CustomerMenu")}}><CustomerViewBtn Name = "Start Order"/></div> 
+          <div class = "CustomerViewBtn" id = "FindRestaraunt" onClick={() => {navigate("/PublicMenu")}}><CustomerViewBtn Name = "Find Restaraunt"/></div>
+          <div class = "CustomerViewBtn" id = "ViewMenu" onClick={() => {navigate("/PublicMenu")}}><CustomerViewBtn Name = "View Menu"/></div>
+
+        </div>
 
       </div>
+
+      <Text> Welcome to Panda Express! </Text>
+
 
     </div>
   )

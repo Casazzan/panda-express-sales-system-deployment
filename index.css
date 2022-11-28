@@ -201,28 +201,6 @@ body {
   transition-duration: 0.4s;
 }
 
-/* Customer Landing (CustMainPage + CustomerViewBtn) */
-
-.CustOptions .CustomerViewBtn {
-  
-  font-size: 14px;
-  font-weight: bold;
-  background-color: #8b0909;
-  color: white;
-  border: 2px solid #000000;
-  padding: 5px 15px;
-  border-radius: 10px;
-  margin: 0px 5px;
-}
-
-.CustOptions .CustomerViewBtn:hover, .CustOptions .CustomerViewBtn:focus {
-  background: #000000;
-  border: none;
-  color: rgb(255, 255, 255);
-  border: 1px solid #ffffff;;
-  transition: 0.5s ease-in-out;
-}
-
 
 /*---------------------------------------------------------------*/
 
