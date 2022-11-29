@@ -28,8 +28,8 @@ router.get('/', (req, res) => {
 });
 
 router.get('/delete', (req, res) => {
-    let name = req.query.name;
-    const query = `DELETE FROM roster WHERE employee_name = '${name}'`;
+    let id = req.query.id;
+    const query = `DELETE FROM roster WHERE employee_id = ${id}`;
     console.log(`Performing query: ${query}`);
     pool
         .query(query)
@@ -77,6 +77,19 @@ router.get('/nextID', (req, res) => {
         .then(query_res => {
             const data = query_res.rows[0];
             res.send({"nextID": data.max + 1});
+            //res.render('user', data);
+        });
+});
+
+router.get('/update_type', (req, res) => {
+    let id = req.query.id;
+    let type = req.query.manager == 0 ? 'f':'t';
+    const query = `UPDATE roster SET is_manager = '${type}' where employee_id = ${id}`;
+    console.log(`Performing query: ${query}`);
+    pool
+        .query(query)
+        .then(query_res => {
+            res.status(200).end();
             //res.render('user', data);
         });
 });

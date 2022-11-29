@@ -55,8 +55,8 @@ router.get('/add', (req, res) => {
 });
 
 router.get('/delete', (req, res) => {
-    let name = req.query.name;
-    const query = `DELETE FROM inventory WHERE item_name = '${name}'`;
+    let id = req.query.id;
+    const query = `DELETE FROM inventory WHERE item_id = ${id}`;
     console.log(`Performing query: ${query}`);
     pool
         .query(query)
@@ -127,5 +127,46 @@ router.get('/nextID', (req, res) => {
             const data = query_res.rows[0];
             res.send({"nextID": data.max + 1});
         });
+});
+
+router.get('/restock', (req, res) => {
+    const data_query = `SELECT item_id, restock_quantity FROM inventory`
+    console.log(`Performing query: ${data_query}`);
+    pool
+        .query(data_query)
+        .then(query_res => {
+            // for each item; update quantity to restock_quantity
+            for (let i = 0; i < query_res.rowCount; i++){
+                const item = query_res.rows[i];
+                const update_query = `UPDATE inventory SET servings =${item.restock_quantity} WHERE item_id=${item.item_id}`;
+                console.log(`Performing query: ${update_query}`);
+                pool.query(update_query);
+            }
+            
+            res.status(200).end();
+        });
+    
+});
+
+
+router.get('/critical_restock', (req, res) => {
+    const data_query = `SELECT item_id, minimum_amount, servings, restock_quantity FROM inventory`;
+    console.log(`Performing query: ${data_query}`);
+    pool
+        .query(data_query)
+        .then(query_res => {
+            // for each item; update quantity to restock_quantity
+            for (let i = 0; i < query_res.rowCount; i++){
+                const item = query_res.rows[i];
+                if(item.servings < item.minimum_amount) {
+                    const update_query = `UPDATE inventory SET servings =${item.restock_quantity} WHERE item_id=${item.item_id}`;
+                    console.log(`Performing query: ${update_query}`);
+                    pool.query(update_query);
+                }
+            }
+            
+            res.status(200).end();
+        });
+    
 });
 module.exports = router;

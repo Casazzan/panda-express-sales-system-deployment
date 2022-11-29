@@ -45,8 +45,8 @@ Ex: http://localhost:3000/inventory/add?id21=&name=testname&servings=10&restock_
 Ex Response: No response
 
 #### Remove Item From Inventory
-Route: /innentory/delete?name={item_name}
-Ex: http://localhost:3000/inventory/delete?name=testname
+Route: /innentory/delete?id={item_id}
+Ex: http://localhost:3000/inventory/delete?id=22
 Ex Response: No response
 
 #### Subtract Servings From Item
@@ -73,6 +73,17 @@ Ex Response: \[{"item_id":5,"item_name":"sweetfire_chicken_breast","servings":"1
 Route: /inventory/nextID
 Ex: http://localhost:3000/inventory/nextID
 Ex Response: {"nextID":22}
+
+#### Restock Full Inventory
+Route: /inventory/restock
+Ex: http://localhost:3000/inventory/restock
+Ex Response: No response
+
+
+#### Restock Critical Inventory
+Route: /inventory/critical_restock
+Ex: http://localhost:3000/inventory/critical_restock
+Ex Response: No response
 
 ### Order History
 
@@ -110,8 +121,8 @@ Ex: http://localhost:3000/roster/summary
 Ex Response: \[{"employee_id":3,"employee_name":"Jackie Wells","is_manager":false},...\]
 
 #### Delete Employee
-Route: /roster/delete?name={employee_name}
-Ex: http://localhost:3000/roster/delete?name=Jackie%20Wells
+Route: /roster/delete?id={employee_id}
+Ex: http://localhost:3000/roster/delete?id=4
 Ex Response: No response
 Note: '%20' represents a space in the database entry
 
@@ -124,3 +135,8 @@ Ex Response: No response
 Route: /roster/nextID
 Ex: http://localhost:3000/roster/nextID
 Ex Response: {"nextID":11}
+
+#### Update Type (Manager/Not) By Employee ID
+Route: /roster/update_type?id={employee_id}&manager={1 for manager, 0 for not}
+Ex: http://localhost:3000/roster/update_type?id=4&manager=1
+Ex Response: No Response
