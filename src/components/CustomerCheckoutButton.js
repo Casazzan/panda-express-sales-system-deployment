@@ -1,3 +1,4 @@
+import { send } from 'process';
 import React, { Component } from 'react'
 import "../index.css"
 
@@ -143,11 +144,14 @@ const orderTheItems = async (MyListOfOrders) => {
     }
 }
 
-
+const sendsOrderAndDeletesCurrentOrder = (props2) => {
+    orderTheItems(props2.order);
+    props2.updateOrderCallbackTwo([[[]]]);
+}
 
 const CustomerCheckoutButton = (props) => {
     return (
-        <div id = "CheckoutText" onClick = {() => {orderTheItems(props.order)}}>Checkout</div>
+        <div id = "CheckoutText" onClick = {() => {sendsOrderAndDeletesCurrentOrder(props)}}>Checkout</div>
     )
 }
 

@@ -11,7 +11,7 @@ const CustomerCheckout = (props) => {
   
   return (
     <div class = "CheckoutScreen">
-        <div class = "CustomerCheckoutButton" id = "Checkout"><CustomerCheckoutButton order={props.order}/></div>
+        <div class = "CustomerCheckoutButton" id = "Checkout"><CustomerCheckoutButton order={props.order} updateOrderCallbackTwo={(order) => props.updateOrderCallback(order)}/></div>
         <div class = "CustomerCheckoutButton" id = "GoBack" onClick={() => {props.homeView()}}><CustomerDishChoiceButton Name = "Go&nbsp;Back" /></div>
         <div id = "Price">{`Final Total: ${props.price}`}</div>
     </div>
