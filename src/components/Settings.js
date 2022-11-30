@@ -19,6 +19,8 @@ function LanguageSettings() {
           <option value="Spanish">Spanish</option>
           <option value="German">German</option>
           <option value="French">French</option>
+          <option value="Simplified Chinese">Simplified Chinese</option>
+          <option value="Traditional Chinese">Traditional Chinese</option>
         </select> 
         <p></p>
       </form>

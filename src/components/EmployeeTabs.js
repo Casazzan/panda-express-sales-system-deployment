@@ -1,25 +1,40 @@
-import { useState } from "react";
-import "../App.css";
 import RosterDisplay from './RosterDisplay';
+import RosterSelector from './RosterSelector';
+import {useState, useEffect} from 'react';
 
 // https://www.w3schools.com/html/html_tables.asp
 // table 
 
 function EmployeeTabs() {
+  /* these are useState hooks */
   const [toggleState, setToggleState] = useState(1);
-  const [name, setName] = useState('');
-  const [type, setType] = useState('');
-  const [id, setID] = useState('0');
-  const [changeID, setChangeID] = useState('0');
-  const [changeName, setChangeName] = useState('John Doe');
+  const [type, setType] = useState('0');
   const [changeType, setChangeType] = useState('f');
-
-  const [RosterSummary, setRosterSummary] = useState('0');
-
+  const [RosterSummary, setRosterSummary] = useState('');
+  const [userInput, setUserInput] = useState(''); 
 
   const toggleTab = (index) => {
     setToggleState(index);
   };
+
+  const deleteEmployee = async() => {
+    var selected = document.getElementById("selectedEmployeeDiv").innerHTML;
+    console.log(selected);
+    const promise = fetch(`http://localhost:3000/roster/delete?${selected}`); 
+    const response = await promise;
+  }
+
+  const updateEmployee = () => {
+    var selected = document.getElementById("selectedEmployeeDiv").innerHTML;
+    console.log("update employee: ", selected, changeType);
+  }
+
+  useEffect(() => {
+    let ignore = false;
+
+    if (!ignore)  queryRosterSummary()
+    return () => { ignore = true; }
+    },[]);
 
   const queryRosterSummary = async() => {
     const promise = fetch(`http://localhost:3000/roster/summary`); 
@@ -29,16 +44,27 @@ function EmployeeTabs() {
     setRosterSummary(result);
   };
 
-  const addEmployee = async() => {
-    console.log("inserting "+ {name} + {id} + {type});
-    const promise = fetch(`http://localhost:3000/roster/add?id=${id}name=${name}manager=${type}`); 
+  const inputchangehandler = (event) => {
+    setUserInput(event.target.value);
+    console.log(userInput);
+  }
+
+  const addEmployeeTest = async() => {
+    const firstPromise = fetch(`http://localhost:3000/roster/nextID`); 
+    const firstResponse = await firstPromise;
+    const result = await firstResponse.json();
+    var newID = result.nextID;
+    console.log("submit button");
+    console.log("userInput: ", userInput);
+    console.log("type: ", type);
+    console.log(result.nextID);
+    console.log("inserting "+ userInput, newID, type);
+    const promise = fetch(`http://localhost:3000/roster/add?id=${result.nextID}&name=${userInput}&manager=${type}`); 
     const response = await promise;
-    const result = await response.json();
-    console.log("Added: " + {name} + {id} + {type});
-    setName("John Doe");
-    setID(0);
+    setUserInput("");
     setType(0);
-  };
+    console.log("Added: " + userInput + newID + type);
+  }
 
   return (
     <div className="container">
@@ -68,7 +94,6 @@ function EmployeeTabs() {
           className={toggleState === 1 ? "content  active-content" : "content"}
         >
           <h2>Roster</h2>
-          <button className="SubmitCritical" onClick={() => queryRosterSummary()}> View Roster</button>
           <RosterDisplay rosterList={RosterSummary}/>
           <p></p>
         </div>
@@ -78,39 +103,23 @@ function EmployeeTabs() {
         >
           <h2>Add Employee</h2>
           <hr />
-            <form>
               <label> Enter Name: </label>
-              <input
-                type="text"
-                required
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-              <p></p>
-              <label> Enter ID: </label>
-              <input
-                type="number"
-                required
-                value={id}
-                onChange={(e) => setID(e.target.value)}
-              />
+              <input type="text" name="name" 
+                    onChange={inputchangehandler} 
+                    value = {userInput}/>
               <p></p>
               <label> Enter Type: </label>
               <select
                 value={type}
                 onChange={(e) => setType(e.target.value)}
               >
-                <option value="t">Manager</option>
-                <option value="f">Regular Employee</option>
+                <option value="1">Manager</option>
+                <option value="0">Regular Employee</option>
               </select> 
               <p></p>
-              <button className="SubmitButton" onClick={() => addEmployee()}> Submit</button>
+              <button className="SubmitButton" onClick={() => addEmployeeTest()}> Submit</button>
               <p>
-                {name}
-                {type}
-                {id}
               </p>
-            </form>
         </div>
 
         <div
@@ -118,49 +127,33 @@ function EmployeeTabs() {
         >
           <h2>Modify Employee</h2>
           <hr />
-          <form>
-            <label> Select Employee you wish to modify: </label>
-            <select
-              value={type}
-              onChange={(e) => setChangeType(e.target.value)}
-            >
-            /* TODO change to read from database */
-              <option value="Barbra Linder">Barbra Linder</option>
-              <option value="Lewis Smith">Lewis Smith</option>
-              <option value="Lydia Johnson">Lidia Johnson</option>
-            </select> 
-            <p></p>
+              <label> Select Employee you wish to modify: </label>
+              <RosterSelector 
+                rosterList={RosterSummary}/>
+              <p></p>
 
-            <label> Select New Type: </label>
-            <select
-              value={changeType}
-              onChange={(e) => setChangeType(e.target.value)}
-            >
-              <option value="Manager">Manager</option>
-              <option value="Regular Employee">Regular Employee</option>
-            </select>
-            <p></p>
+              <label> Select New Type: </label>
+              <select
+                value={changeType}
+                onChange={(e) => setChangeType(e.target.value)}
+              >
+                <option value="Manager">Manager</option>
+                <option value="Regular Employee">Regular Employee</option>
+              </select>
+              <p></p>
 
-            <label>Enter New Name: </label>
-            <input
-              type="text"
-              required
-              value={changeName}
-              onChange={(e) => setChangeName(e.target.value)}
-            />
-            <p></p>
-
-            <label>Enter New ID: </label>
-            <input
-              type="number"
-              required
-              value={changeID}
-              onChange={(e) => setChangeID(e.target.value)}
-            />
-            
-            <p></p>
-            <button className="SubmitButton">Sumbit</button>
-          </form>
+              <button 
+                className="SubmitButton" 
+                id="delete" 
+                onClick={() => deleteEmployee()} >
+                Delete
+              </button>
+              <button 
+                className="SubmitButton" 
+                id="update" 
+                onClick={() => updateEmployee()} >
+                Update
+              </button>
         </div>
       </div>
     </div>

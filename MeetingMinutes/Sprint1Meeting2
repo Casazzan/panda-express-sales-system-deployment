@@ -1,0 +1,51 @@
+SCRUM Meeting 2 for Panda Express Team
+Prepared by: Alex
+Meeting Date: 11/5
+Meeting Attendees
+Alex De Young
+ Devan Shea
+ Nathan Casazza
+Nicole Clements
+Anna Slater 
+Meeting Agenda Items
+Frontend communication with database
+Frontend communication between the frontend frames using localStorage
+Status Update Since Last Meeting
+Accomplishments:
+Continue making frontend
+Make Backend Functionality
+
+Tasks Completed:
+Task Description
+Assigned to
+Completed? (yes/no)
+Made more backend functions for manager side
+Nathan
+yes
+Completed the manger side frontend skeleton
+Anna
+no
+Completed the cashier side frontend skeleton
+Devan
+yes
+Completed the made the customer side frontend skeleton
+Alex
+no
+
+Before The Next Meeting
+Plans:
+ Finish making the database communication
+Finish making the frontend skeletons
+
+Task Assignments:
+Task Description
+Assigned to
+Complete the manager side
+Anna
+Complete the Cashier Side
+Devan
+Complete the Customer Side
+Alex/Nicole
+
+Minutes from Previous Meeting
+We accomplished and completed more backend work and completed most of the skeleton code for the manager, cashier, and customer sides. We now need to fill in the code to make it look good. We aren’t going to put the google or OAUTH UI’s into our product yet as we have to make our first site work correctly. Alex wasn’t doing so well on the customer side so we assigned Nicole to help him out as she is kind of a floater.

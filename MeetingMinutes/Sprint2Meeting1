@@ -1,0 +1,47 @@
+SCRUM Meeting 1 for Panda Express Point of Sale System
+Prepared by: Alex De Young
+Meeting Date: 11/10
+Meeting Attendees
+Alex De Young
+Devan Shea
+Nathan Casazza
+Nicole Clements
+Anna Slater 
+Meeting Agenda Items
+ Go over what else needs to be done to get everything working for the baseline 
+ Status of integration of all of the components
+Status Update Since Last Meeting
+Accomplishments:
+Have everything displaying properly in a baseline format
+Got everything working for the customer side
+Improved formatting of the database data on the manager side 
+
+Tasks Completed:
+Task Description
+Assigned to
+Completed? (yes/no)
+Completed Database communication for checkout button
+Alex
+yes
+Fixed formatting for the manager side
+Anna
+No (almost there)
+Finished the Customer Side
+Alex
+yes
+
+Before The Next Meeting
+Plans:
+ Fix the remaining parts of the server side
+Make the main menu from which to access all of the subparts with room for OAuth to be implemented
+
+Task Assignments:
+Task Description
+Assigned to
+Fix the manager side formatting
+Anna
+Create the main menu from which we can access all the screens
+Devan
+
+Minutes from Previous Meeting.
+We talked about finishing the second MVP for the product. We implemented functions involving localstorage very heavily in the customer and server sides, and we asked nathan if that might affect anything and he said it might later on, so we are reconsidering what to do with it, however most things we’ve made work with local storage so the redesign would be extensive. We decided to work with what we’ve been working on and redesign later if needed. We need to finish the customer side backend communication and finish the customer side stylizations. 

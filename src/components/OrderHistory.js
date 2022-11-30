@@ -1,9 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../App.css";
 import Summary from './OrderHistoryDisplay'
 
 function OrderHistory() {
   const [orderHistorySummary, setOrderHistorySummary] = useState('0');
+
+  useEffect(() => {
+    let ignore = false;
+
+    if (!ignore)  querySummary()
+    return () => { ignore = true; }
+    },[]);
 
   const querySummary = async() => {
     const promise = fetch(`http://localhost:3000/order_history/summary`); 
@@ -16,7 +23,6 @@ function OrderHistory() {
   return (
     <div>
       <h2>Current Inventory</h2>
-      <button className="SubmitCritical" onClick={() => querySummary()}> View Order History</button>
     <Summary orderList={orderHistorySummary}/>
     </div>
   );

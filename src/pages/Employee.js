@@ -20,8 +20,6 @@ class Employee extends Component {
         <Sidebar />
         <div className="Right">
         <EmployeeTabs />
-        <p className="App-intro">{this.state.apiResponse}</p>
-            <button onClick={this.getSummary}>Get Employee 2</button>
         </div>
         <div className="Footer">
         Footer
@@ -32,4 +30,3 @@ class Employee extends Component {
 }
 
 export default Employee; 
-

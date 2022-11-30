@@ -1,0 +1,48 @@
+SCRUM Meeting 3 for Panda Express Point of Sale System
+Prepared by: Alex De Young
+Meeting Date: 11/19
+Meeting Attendees
+ Alex De Young
+Devan Shea
+Nathan Casazza
+Nicole Clements
+Anna Slater
+Meeting Agenda Items
+Discuss status of the main branch on github
+Discuss the status of everyone and make sure the backend isn’t causing any trouble for anyone
+Status Update Since Last Meeting
+Accomplishments:
+Reworked customer display
+Merged all the screens and have a working MVP in the main branch
+Finished working with the backend
+
+Tasks Completed:
+Task Description
+Assigned to
+Completed? (yes/no)
+Reworked the customer display to use react components instead of local storage, making them able to be updated when selected instead of reloading the screen
+Alex
+yes
+Fixed manager side formatting
+Anna
+yes
+Move server side away from using localStorage
+Devan
+no
+
+Before The Next Meeting
+Plans:
+Look at API’s that we need
+Look at google translate
+Move the server side backend away from 
+
+Task Assignments:
+Task Description
+Assigned to
+Make another menu that shows all the menu items but doesn’t have the ability to order them or interact with the database
+Nicole
+Move server side away from using localStorage
+Devan
+
+Minutes from Previous Meeting
+We decided we need to refactor the code for the customer and server side because it extensively uses local storage. We wanted to have the current order screen and price in the same screen as the screen that you selected the items in 0rder to provide the customer instant feedback. In order to do this we need to reload the current order and price function. We can’t tell when the option is benign erased with the local storage option so we had to rework our code to use react components. The time it took our backend guy was about 3 hours because it wasn’t too extensive, but we also have to change the server code because it uses the same local storage options. After this refractor we will start looking at API’s

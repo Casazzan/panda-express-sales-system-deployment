@@ -33,7 +33,7 @@ const RosterDisplay = (props) => {
       items.push(RosterDisplay);
   }
   return (
-    <table>
+    <table className="RosterTable">
       {items}
     </table>
     )

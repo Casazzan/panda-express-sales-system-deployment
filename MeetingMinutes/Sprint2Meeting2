@@ -1,0 +1,47 @@
+SCRUM Meeting 2 for Panda Express Point of Sale System
+Prepared by: Alex De Young
+Meeting Date: 11/15
+Meeting Attendees
+ Alex De Young
+Devan Shea
+Nathan Casazza
+Nicole Clements
+Anna Slater
+Meeting Agenda Items
+How to make everything update automatically on customer side
+How to make everything update automatically on server side
+Check up if anyone has encountered any problems with the backend
+Status Update Since Last Meeting
+Accomplishments:
+Created main menu from which we can all navigate to every screen we’ve created
+Added more stylization to the
+
+Tasks Completed:
+Task Description
+Assigned to
+Completed? (yes/no)
+Fix manager side formatting
+Anna
+No (almost there)
+Create main menu
+Devan
+Yes
+
+Before The Next Meeting
+Plans:
+Remake the server side to incorporate react elements instead of using local storage
+Because the server side used a lot of the elements from the customer side like the formatting of orders and the logic using localStorage we need to rework the logic behind that to make everything use react elements.
+Work on the manager side formatting
+
+Task Assignments:
+Task Description
+Assigned to
+Rework the customer display to use react components instead of local storage
+Alex
+Move server side away from using localStorage
+Devan
+Merge all branches together in main
+Devan
+
+Minutes from Previous Meeting
+We have been working on making the new MVP complete with a main menu and all of the products interacting with the backend. We need to fix the formatting of data on the manager side because right now the data is overflowing and we need a way to truncate it. The server side is coming along nicely however the buttons still need to be stylized and it uses the same local storage for its data so we might need to also refractor that if we need to redesign the customer side.
