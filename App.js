@@ -17,6 +17,10 @@ import ServerCheckout from './components/ServerCheckout';
 import ServerMenu from './components/ServerMenu';
 import Items from './components/Items';
 
+import CustMainPage from './components/CustMainPage';
+import PublicMenu from './customer/PublicMenu';
+import StoreFinder from './components/StoreFinder';
+
 import CustomerCheckout from './components/CustomerCheckout';
 import CustomerMenu from './components/CustomerMenu';
 import Container from './customer/container';
@@ -62,6 +66,10 @@ class App extends Component {
           <Route path= "/Manager/inventory" element={<Inventory/>}/>
           <Route path= "/Manager/employee" element={<Employee/>}/>
           <Route path= "/Manager/accessibility" element={<Accessibility/>}/>
+
+          <Route path = "/CustMainPage" element = {<CustMainPage />}></Route>
+          <Route path = "/CustMainPage/PublicMenu" element = {<PublicMenu />}/>
+          <Route path = "/CustMainPage/StoreFinder" element = {<StoreFinder />}/>
 
           <Route path = "/CustomerMenu" element = {<CustomerMenu />}></Route>
           <Route path = "/CustomerMenu/Checkout" element = {<CustomerCheckout />}></Route>

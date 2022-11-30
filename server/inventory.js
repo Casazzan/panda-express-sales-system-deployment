@@ -169,4 +169,5 @@ router.get('/critical_restock', (req, res) => {
         });
     
 });
+
 module.exports = router;

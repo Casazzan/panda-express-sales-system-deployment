@@ -50,4 +50,3 @@ const OrderHistoryDisplay = (props) => {
 }
 
 export default OrderHistoryDisplay
-
