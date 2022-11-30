@@ -14,6 +14,19 @@ class CustomerViewContainer extends React.Component {
             price: "",
             screen: "container"
         };
+        //Alex code for persistance
+        var currentOrderFromLocalStorage = JSON.parse(localStorage.getItem("CurrentOrder"));
+        if (currentOrderFromLocalStorage == null) {
+            console.log("The list doesn't exist");
+            localStorage.setItem('CurrentOrder', JSON.stringify([[[]]]));
+        }
+        else{
+            this.state.currentOrder = currentOrderFromLocalStorage;
+        }
+    }
+
+    componentDidMount() {  
+        this.updatePrice(this.state.currentOrder);
     }
 
     callAPIAsyncGetPrice = async (dishId, idString) => {
@@ -25,13 +38,17 @@ class CustomerViewContainer extends React.Component {
     }
 
     returnPrice = async (MyListOfOrders) => {
+        if (MyListOfOrders[0][0][0] == "" && MyListOfOrders.length == 1){
+            // console.log("MyListOfOrders is empty");
+            return 0.00;
+        }
         var totalPrice = 0;
         var timesRun = 0;
         console.log("LENGTH: " + MyListOfOrders.length);
         for (var i = 0; i < MyListOfOrders.length; i++){
             console.log("RUNNING");
             var dishtype = MyListOfOrders[i][0][0];
-            var dish_id = 1;
+            var dish_id = 0;
             if(dishtype == "bowl"){
                 dish_id = 1;
             }
@@ -41,23 +58,22 @@ class CustomerViewContainer extends React.Component {
             else if(dishtype == "bigger plate"){
                 dish_id = 3;
             }
+            else{ //it must be empty, add 0 and don't calculate further
+                totalPrice+=0;
+                continue;
+            }
             var everythingInTheDish = [];
             for (var j = 1; j < MyListOfOrders[i].length; j++){
-                // if (MyListOfOrders[i][j].length == 1){
-                //     everythingInTheDish.push(MyListOfOrders[i][j][0]);
-                // }
-                // else{
-                    for (var k = 0; k < MyListOfOrders[i][j].length; k++){
-                        if (MyListOfOrders[i][j][k] === ""){
-                            continue;
-                        }
-                        else{
-                            //push all the id's
-                            everythingInTheDish.push(MyListOfOrders[i][j][k]);
-                            timesRun = timesRun + 1;
-                        }
+                for (var k = 0; k < MyListOfOrders[i][j].length; k++){
+                    if (MyListOfOrders[i][j][k] === ""){
+                        continue;
                     }
-                // }
+                    else{
+                        //push all the id's
+                        everythingInTheDish.push(MyListOfOrders[i][j][k]);
+                        timesRun = timesRun + 1;
+                    }
+                }
             }
             if (timesRun == 0) {
                 totalPrice = totalPrice + await this.callAPIAsyncGetPrice(dish_id, "");
@@ -94,6 +110,9 @@ class CustomerViewContainer extends React.Component {
     }
 
     updateOrder(order) {
+        //Alex code for persistance
+        localStorage.setItem("CurrentOrder", JSON.stringify(order));
+        //--------Nathan Working Code
         console.log("trying to update w" + order);
         this.setState((prevState) => {
             return ({
@@ -153,7 +172,7 @@ class CustomerViewContainer extends React.Component {
         else if (this.state.screen === "ordering")
             mainView = <Container addToCart={(itemToAdd, itemType) => this.addToCart(itemToAdd, itemType)}  goBack={()=> this.homeView()}/>;
         else // checkout
-            mainView = <CustomerCheckout homeView = {() => this.homeView()} price={this.state.price} order={this.state.currentOrder}/>;
+            mainView = <CustomerCheckout homeView = {() => this.homeView()} price={this.state.price} order={this.state.currentOrder} updateOrderCallback={(order) => this.updateOrder(order)}/>;
         return (
             <div id="viewContainer">
                 <CustomerDishChoiceCurrentOrder order={this.state.currentOrder} price={this.state.price} updateOrderCallback={(order) => this.updateOrder(order)}/>
