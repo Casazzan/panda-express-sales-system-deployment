@@ -126,8 +126,16 @@ body {
   font-size: max(1.5vw, 15px);
   border-radius: 12px;
   border: 2px solid var(--CustomerDishChoiceButtonEdgeColor);
-
-
+}
+/* Bullet style for the items within dishes */
+.listItemInCurrentOrder{ 
+  list-style-type: none;
+  margin-left: .5em;
+  background-image: url(pics/RedX.png);
+  background-size: 1em .9em;
+  background-repeat: no-repeat;
+  background-position: 0 .2em;
+  padding-left: .1em;
 }
 #viewContainer{
   display:grid;
