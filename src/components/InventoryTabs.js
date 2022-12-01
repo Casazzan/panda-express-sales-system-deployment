@@ -259,4 +259,3 @@ function InventoryTabs() {
 }
 
 export default InventoryTabs;
->>>>>>> Stashed changes
