@@ -11,6 +11,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "concurrently": "^7.6.0",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.18.2",
@@ -27,7 +28,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "node": "node server",
+    "react": "react-scripts start",
+    "dev": "concurrently \"npm run node\" \"npm run react\""
   },
   "eslintConfig": {
     "extends": [
