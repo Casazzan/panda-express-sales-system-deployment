@@ -13,7 +13,7 @@ function OrderHistory() {
     },[]);
 
   const querySummary = async() => {
-    const promise = fetch(`http://localhost:3000/order_history/summary`); 
+    const promise = fetch(`http://localhost:5000/order_history/summary`); 
     const response = await promise;
     const result = await response.json();
     console.log(result);

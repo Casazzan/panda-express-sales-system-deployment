@@ -20,7 +20,7 @@ function EmployeeTabs() {
   const deleteEmployee = async() => {
     var selected = document.getElementById("selectedEmployeeDiv").innerHTML;
     console.log(selected);
-    const promise = fetch(`http://localhost:3000/roster/delete?${selected}`); 
+    const promise = fetch(`http://localhost:5000/roster/delete?${selected}`); 
     const response = await promise;
   }
 
@@ -37,7 +37,7 @@ function EmployeeTabs() {
     },[]);
 
   const queryRosterSummary = async() => {
-    const promise = fetch(`http://localhost:3000/roster/summary`); 
+    const promise = fetch(`http://localhost:5000/roster/summary`); 
     const response = await promise;
     const result = await response.json();
     console.log(result);
@@ -50,7 +50,7 @@ function EmployeeTabs() {
   }
 
   const addEmployeeTest = async() => {
-    const firstPromise = fetch(`http://localhost:3000/roster/nextID`); 
+    const firstPromise = fetch(`http://localhost:5000/roster/nextID`); 
     const firstResponse = await firstPromise;
     const result = await firstResponse.json();
     var newID = result.nextID;
@@ -59,7 +59,7 @@ function EmployeeTabs() {
     console.log("type: ", type);
     console.log(result.nextID);
     console.log("inserting "+ userInput, newID, type);
-    const promise = fetch(`http://localhost:3000/roster/add?id=${result.nextID}&name=${userInput}&manager=${type}`); 
+    const promise = fetch(`http://localhost:5000/roster/add?id=${result.nextID}&name=${userInput}&manager=${type}`); 
     const response = await promise;
     setUserInput("");
     setType(0);

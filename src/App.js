@@ -45,7 +45,7 @@ class App extends Component {
   }
 
   // callAPI = () => {
-  //     fetch("http://localhost:3000/roster?id=2")
+  //     fetch("http://localhost:5000/roster?id=2")
   //     .then(updateUI(res.item_id));
   //         .then(res => res.text())
   //         .then(res => this.setState({ apiResponse: res }, () => console.log(res)));
@@ -60,8 +60,8 @@ class App extends Component {
 
 
   callAPIAsync = async () => {
-    // console.log((await fetch("http://localhost:3000/roster?id=2")).text());
-    return (await fetch("http://localhost:3000/roster?id=2")).text();
+    // console.log((await fetch("http://localhost:5000/roster?id=2")).text());
+    return (await fetch("http://localhost:5000/roster?id=2")).text();
   }
 
   render() {  
