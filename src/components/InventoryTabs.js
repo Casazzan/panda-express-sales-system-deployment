@@ -53,6 +53,18 @@ function InventoryTabs() {
     setCriticalResponse(result);
   };
 
+  const restockCritical = async() => {
+    const promise = fetch(`http://localhost:3000/inventory/critical_restock`); 
+    const response = await promise;
+    console.log("updated critical", response);
+  };
+
+  const restockAll = async() => {
+    const promise = fetch(`http://localhost:3000/inventory/restock`); 
+    const response = await promise;
+    console.log("restock all", response);
+  };
+
   const updateServings = async() => {
     var selected = document.getElementById("selectedItemDiv").innerHTML;
     if (selected != "") {
@@ -212,9 +224,9 @@ function InventoryTabs() {
         >
           <h2>Restock Options</h2>
             <p></p>
-            <button className="SubmitCritical">Restock All</button>
+            <button className="SubmitCritical" onClick={() => restockCritical()}>Restock All</button>
             <p></p>
-            <button className="SubmitCritical">Restock Critical</button>
+            <button className="SubmitCritical" onClick={() => restockAll()}>Restock Critical</button>
             <p></p>
           <hr />
           <h2>Manually Update Inventory</h2>
@@ -247,3 +259,4 @@ function InventoryTabs() {
 }
 
 export default InventoryTabs;
+>>>>>>> Stashed changes
