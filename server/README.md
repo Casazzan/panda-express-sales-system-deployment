@@ -85,6 +85,11 @@ Route: /inventory/critical_restock
 Ex: http://localhost:5000/inventory/critical_restock
 Ex Response: No response
 
+#### Get Seasonal Items
+Route: /inventory/seasonal_items
+Ex: http://localhost:5000/inventory/seasonal_items
+Ex Response: [{"item_id":21,"item_name":"seasonal_chicken_5","servings":"300.00","restock_quantity":300,"item_price":"10.00","food_type":"entree","minimum_amount":30}]
+
 ### Order History
 
 #### Single Order Item Query
