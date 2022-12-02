@@ -81,6 +81,11 @@ body {
   width: 20%;
   cursor: pointer;
 }
+#customer{
+  font-size: max(1.3vw,25px);
+  font-weight: bold;
+  block-size: max(1.3vw,100px);
+}
 
 
 
@@ -425,7 +430,6 @@ body {
   align-items: center;
   height: auto;
 }
-
 
 
 /*---------------------------------------------------------------*/
