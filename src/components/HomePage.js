@@ -10,6 +10,7 @@ const clientId = '569817754455-gefflnacglb4mubcrlp94bqknusirsld.apps.googleuserc
 var wasSuccessful = false;
 
 const onSuccess = (res) => {
+    
     console.log('success:', res);
     wasSuccessful = true;
 };
@@ -38,7 +39,8 @@ const HomePage = () => {
             <button class = "HomePageButton" id = "customer" onClick={renderProps.onClick}>Manager Settings</button>
             )}
             buttonText="Manager Settings"
-            onSuccess={onSuccess}
+            // onSuccess={onSuccess}
+            onSuccess={() => {navigate("/CustomerMenu")}}
             onFailure={onFailure}
             cookiePolicy={'none'}
             />
