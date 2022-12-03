@@ -6,14 +6,6 @@ var displayName = ['Honey Seasame Chicken', 'Orange Chicken', 'Black Pepper Angu
   
   const CustomerDishChoiceCurrentOrder = (props) => {
     console.log(props);
-    
-    // localStorage.setItem('CurrentOrder', JSON.stringify(mylistoforders));
-    //if the orders don't exist
-    // if (mylistoforders2 == null) {
-    //   console.log("mylistoforders2 doesn't exist");
-    //   localStorage.setItem('CurrentOrder', JSON.stringify(test));
-    //   // localStorage.setItem('CurrentOrder', JSON.stringify(mylistoforders));
-    // }
     const handlechange = (index, subIndex, subsubIndex) => {
       const mynewlistoforders = props.order;
       //If if is a whole order, delete everything inside
@@ -26,6 +18,14 @@ var displayName = ['Honey Seasame Chicken', 'Orange Chicken', 'Black Pepper Angu
       props.updateOrderCallback(mynewlistoforders);
     };
 
+    const displayTheName = (orderName) => {
+      if(databaseName.includes(orderName)){
+        return displayName[databaseName.indexOf(orderName)];
+      }
+      else{
+        return(orderName);
+      }
+    }
     return (
       <div className = "CustomerMenuCurrentOrder">
         {props.order.map((items, index) => {
@@ -51,7 +51,7 @@ var displayName = ['Honey Seasame Chicken', 'Orange Chicken', 'Black Pepper Angu
                       }
                       else {
                         return (
-                          <span onClick={() => {handlechange(index,subIndex,subsubIndex);}}><li class = "listItemInCurrentOrder">{displayName[databaseName.indexOf(subsubItems)]}</li></span>
+                          <span onClick={() => {handlechange(index,subIndex,subsubIndex);}}><li class = "listItemInCurrentOrder">{displayTheName(subsubItems)}</li></span>
                         )
                       }
                       //--------------------------------------------

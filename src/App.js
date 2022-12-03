@@ -12,6 +12,7 @@ import Accessibility from './pages/Accessability';
 import ErrorPage from './pages/ErrorPage';
 
 import HomePage from './components/HomePage';
+import LoginPage from './components/LoginPage';
 
 import ServerCheckout from './components/ServerCheckout';
 import ServerMenu from './components/ServerMenu';
@@ -68,7 +69,8 @@ class App extends Component {
     return (  
       <Router>
         <Routes>
-          <Route path = "/" element = {<HomePage />}></Route>
+          <Route path = "/" element = {<LoginPage />}></Route>
+          <Route path = "/View" element = {<HomePage />}></Route>
 
           <Route path = "/ServerMenu" element = {<ServerMenu />}></Route>
           <Route path = "/ServerMenu/Checkout" element = {<ServerCheckout />}></Route>

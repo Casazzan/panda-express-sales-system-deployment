@@ -87,7 +87,6 @@ class CustomerTotalPrice extends Component   {
         return (
             // <div>{returnPrice(JSON.parse(localStorage.getItem('CurrentOrder')))}</div>
             <span id = "PriceSpan">Price: {this.state.price}</span>
-            // <div>Pending</div>
         )
     }
 }
