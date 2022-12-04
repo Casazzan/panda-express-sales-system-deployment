@@ -1,8 +1,18 @@
 import React from 'react'
 import Sidebar from '../components/Sidebar'
 import Settings from '../components/Settings';
+import { useState, useEffect } from "react";
+import axios from 'axios'
 
 const Accessibility = () => {
+
+
+  const [language, setLanguage] = useState('');
+  const [languages, setLanguages] = useState(null);
+  const [color, setColor] = useState('');
+
+
+
   return (
     <div>
       <Sidebar />

@@ -83,6 +83,22 @@ select {
   transition:.7s;
 }
 
+.SubmitLanguage {
+  height: 30px;
+  width: 230px;
+  background-color: #c5292c;
+  color:white;
+  display:block;
+  position:absolute;
+  top:27%;
+  left:50.5%;
+}
+
+.SubmitCritical:hover {
+  background-color: #6e3638;
+  transition:.7s;
+}
+
 .App-header {
   background-color: #b10000;
   min-height: 100vh;
