@@ -9,7 +9,7 @@ function EmployeeTabs() {
   /* these are useState hooks */
   const [toggleState, setToggleState] = useState(1);
   const [type, setType] = useState('0');
-  const [changeType, setChangeType] = useState('f');
+  const [changeType, setChangeType] = useState('0');
   const [RosterSummary, setRosterSummary] = useState('');
   const [userInput, setUserInput] = useState(''); 
 
@@ -20,13 +20,16 @@ function EmployeeTabs() {
   const deleteEmployee = async() => {
     var selected = document.getElementById("selectedEmployeeDiv").innerHTML;
     console.log(selected);
-    const promise = fetch(`http://localhost:5000/roster/delete?${selected}`); 
+    console.log("delete employee: ", selected);
+    const promise = fetch(`http://localhost:5000/roster/delete?id=${selected}`); 
     const response = await promise;
   }
 
-  const updateEmployee = () => {
+  const updateEmployee = async() => {
     var selected = document.getElementById("selectedEmployeeDiv").innerHTML;
     console.log("update employee: ", selected, changeType);
+    const promise = fetch(`http://localhost:5000/roster/update_type?id=${selected}&manager=${changeType}`); 
+    const response = await promise;
   }
 
   useEffect(() => {
@@ -137,8 +140,8 @@ function EmployeeTabs() {
                 value={changeType}
                 onChange={(e) => setChangeType(e.target.value)}
               >
-                <option value="Manager">Manager</option>
-                <option value="Regular Employee">Regular Employee</option>
+                <option value="1">Manager</option>
+                <option value="0">Regular Employee</option>
               </select>
               <p></p>
 

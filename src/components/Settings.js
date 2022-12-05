@@ -9,7 +9,7 @@ function Accessibility() {
 
   const [language, setLanguage] = useState('');
   const [languages, setLanguages] = useState(null);
-  const [translatedText, setTranslatedText] = useState('');
+  const [translatedText, setTranslatedText] = useState('Submit');
   const [color, setColor] = useState('');
 
   window.addEventListener('storage', (e) => {

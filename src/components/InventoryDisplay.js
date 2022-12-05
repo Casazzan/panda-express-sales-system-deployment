@@ -4,6 +4,8 @@ const InventoryDisplay = (props) => {
   
   console.log(props.inventoryList);
   const items = []
+  /*https://stackoverflow.com/questions/43572436/sort-an-array-of-objects-in-react-and-render-them
+  */
   if (!props.inventoryList) {
     return (<div></div>);
   }
