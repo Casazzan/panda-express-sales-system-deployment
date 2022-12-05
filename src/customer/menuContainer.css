@@ -3,7 +3,6 @@
     background-color: #8b0909;
     width: 100%;
     overflow: 'auto';
-    border: 20px solid #8b0909;
 
   }
 
@@ -112,7 +111,7 @@
   
   .menuContainer .menuItems  main .details .selectBtn .btn:hover {
     background: none;
-    color: #ffffff;;
-    border: 1px solid #ffffff;;
+    color: #ffffff;
+    border: 1px solid #ffffff;
     transition: 0.5s ease-in-out;
   }
