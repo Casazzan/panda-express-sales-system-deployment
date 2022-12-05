@@ -149,7 +149,7 @@ Ex Response: No Response
 ### Authorized Emails
 
 #### Get Full List Of Emails
-Route: /authroized_emails/summary
+Route: /authorized_emails/summary
 Ex: http://localhost:5000/authorized_emails/summary
 Ex Response: [{"email":"alex.m.deyoung@tamu.edu"},{"email":"casazzan@tamu.edu"},...]
 
