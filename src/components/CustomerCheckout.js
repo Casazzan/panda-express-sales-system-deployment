@@ -1,5 +1,5 @@
 import React from 'react'
-import CustomerDishChoiceCurrentOrder from "./CustomerDishChoiceCurrentOrder";
+import CustomerDishChoiceCurrentOrder from "./customer/CustomerDishChoiceCurrentOrder";
 import '../index.css';
 import CustomerDishChoiceButton from './CustomerDishChoiceButton';
 import { useNavigate } from 'react-router-dom';
@@ -7,15 +7,13 @@ import CustomerTotalPrice from './CustomerTotalPrice';
 import CustomerCheckoutButton from './CustomerCheckoutButton';
 
 
-const CustomerCheckout = () => {
+const CustomerCheckout = (props) => {
   
-  let navigate = useNavigate();
   return (
     <div class = "CheckoutScreen">
-        <div class = "CustomerCheckoutOrder"><CustomerDishChoiceCurrentOrder /></div>
-        <div id = "Checkout"><CustomerCheckoutButton /></div>
-        <div class = "CustomerCheckoutButton" id = "GoBack" onClick={() => {navigate("/CustomerMenu")}}><CustomerDishChoiceButton Name = "Go Back" /></div>
-        <div id = "Price"><CustomerTotalPrice /></div>
+        <div class = "CustomerCheckoutButton" id = "Checkout"><CustomerCheckoutButton order={props.order} updateOrderCallbackTwo={(order) => props.updateOrderCallback(order)}/></div>
+        <div class = "CustomerCheckoutButton" id = "GoBack" onClick={() => {props.homeView()}}><CustomerDishChoiceButton Name = "Go&nbsp;Back" /></div>
+        <div id = "Price">{`Final Total: ${props.price}`}</div>
     </div>
     )
     

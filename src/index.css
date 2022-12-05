@@ -1,10 +1,6 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+html {
+  overflow: -moz-scrollbars-vertical;
+  overflow-y: scroll;
 }
 
 code {
@@ -24,7 +20,7 @@ code {
   --CustomerDishChoiceButtonTextHoverColor: #000000;
   --CustomerDishChoiceButtonBackgroundHoverColor: #ffffff;
   --CustomerCurrentOrderBackgroundColor: #f5f5f5;
-  background-color: var(--CustomerDishMenuBackgroundColor);
+  --BackgroundColorWholeThing: #8B0909;
 }
 
 
@@ -35,6 +31,12 @@ body::-webkit-scrollbar {
 
 /* Hide scrollbar for IE, Edge and Firefox */
 body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
@@ -48,11 +50,11 @@ body {
 }
 .CustomerMenuGrid{
   display:grid;
-	grid-template-rows: 1fr 1fr 30%;
-	grid-template-columns: 40% 28% 28%;
+	grid-template-rows: 1fr 1fr;
+	grid-template-columns: 48% 48%;
 	grid-gap: 0px 2%;
 	block-size:fit-content;
-  background-image: url('pics/RedBackground.jpg');
+  background-color: var(--BackgroundColorWholeThing);
   /* Make root have the background image and cover it */
   height: 100%
 }
@@ -79,32 +81,37 @@ body {
 }
 #Bowl{
   grid-row: 1 / span 1;
-	grid-column: 2 / span 1;
+	grid-column: 1 / span 1;
 }
 #Plate{
   grid-row: 1 / span 1;
-	grid-column: 3 / span 1;
+	grid-column: 2 / span 1;
 }
 #BiggerPlate{
   grid-row: 2 / span 1;
-	grid-column: 2 / span 1;
+	grid-column: 1 / span 1;
 }
 #IndividualItems{
   grid-row: 2 / span 1;
-	grid-column: 3 / span 1;
+	grid-column: 2 / span 1;
 }
 #CheckoutScreen{
   grid-row: 2 / span 1;
-	grid-column: 3 / span 1;
-  font-size: max(1.2vw,10px);
+	grid-column: 2 / span 1;
+  padding: 25px;
+  padding-top: 20%;
+  /* font-size: max(1.2vw,10px); */
 }
 
 
 /* List of all food items ordered */
 .CustomerMenuCurrentOrder{
+
+  position: relative;
+  height: 1500px;
+
   grid-row: 1 / span 2;
 	grid-column: 1 / span 1;
-
   background-color: var(--CustomerCurrentOrderBackgroundColor);
   margin: 15px;
   border: none;
@@ -120,17 +127,43 @@ body {
   border-radius: 12px;
   border: 2px solid var(--CustomerDishChoiceButtonEdgeColor);
 }
+/* Bullet style for the items within dishes */
+.listItemInCurrentOrder{ 
+  list-style-type: none;
+  margin-left: .5em;
+  background-image: url(pics/RedX.png);
+  background-size: 1em .9em;
+  background-repeat: no-repeat;
+  background-position: 0 .2em;
+  padding-left: .1em;
+}
+#viewContainer{
+  display:grid;
+	grid-template-rows: 100vh;
+	grid-template-columns: 40% 58%;
+	grid-gap: 0px 1%;
+	block-size:fit-content;
+  background-color: var(--BackgroundColorWholeThing);
+  /* Make root have the background image and cover it */
+  height: 100%;
+
+}
+
+
+
+
 
 /* Checkout Screen */
 .CheckoutScreen{
   display:grid;
-	grid-template-rows: 1fr 50% 25%;
-	grid-template-columns: 13% 33% 33% 13%;
+	grid-template-rows: 1fr 1fr;
+	grid-template-columns: 48% 48%;
 	grid-gap: 0px 2%;
 	block-size:fit-content;
-  background-image: url('pics/RedBackground.jpg');
+  background-image: var(--BackgroundColorWholeThing);
+  margin: auto;
 }
-.CustomerCheckoutOrder{
+/* .CustomerCheckoutOrder{
   grid-row: 1 / span 1;
 	grid-column: 2 / span 2;
 
@@ -148,7 +181,7 @@ body {
   font-size: max(1.5vw, 15px);
   border-radius: 12px;
   border: 2px solid var(--CustomerDishChoiceButtonEdgeColor);
-}
+} */
 .CustomerCheckoutButton {
   background-color: var(--CustomerDishChoiceButtonBackgroundColor);
   border: none;
@@ -169,22 +202,24 @@ body {
   color: var(--CustomerDishChoiceButtonTextHoverColor);
   cursor: default;
 }
-#Checkout{
-  grid-row: 3 / span 1;
-	grid-column: 3 / span 1;
 
-  padding-top: 5%;
-}
-#GoBack{
-  grid-row: 3 / span 1;
+
+#Checkout{
+  grid-row: 2 / span 1;
 	grid-column: 2 / span 1;
 }
-#Price{
+#GoBack{
   grid-row: 2 / span 1;
-  grid-column: 2 / span 2;
-  padding: 10px;
+	grid-column: 1 / span 1;
+  padding-right: max(90px, 5vw);
+  padding-left: 25px;
+}
+#Price{
+  grid-row: 1 / span 1;
+  grid-column: 1 / span 2;
+  padding: 20px;
   margin:auto;
-  font-size: max(1.2vw,15px);
+  font-size: max(1.2vw,25px);
   border-radius: 12px;
   border: 2px solid var(--CustomerDishChoiceButtonEdgeColor);
   background-color: var(--CustomerCurrentOrderBackgroundColor)
@@ -193,12 +228,13 @@ body {
   font-size: max(2vw,20px);
 }
 #CheckoutText{
-  padding-top: auto;
+  padding-top: max(20px, 1.9vw);
   text-decoration: none;
   text-align: center;
   font-size: max(2vw,25px);
   border-radius: 12px;
   transition-duration: 0.4s;
+  font-weight: bold;
 }
 
 

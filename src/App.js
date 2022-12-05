@@ -12,12 +12,17 @@ import Accessibility from './pages/Accessability';
 import ErrorPage from './pages/ErrorPage';
 
 import HomePage from './components/HomePage';
+import LoginPage from './components/LoginPage';
 
 import ServerCheckout from './components/ServerCheckout';
 import ServerMenu from './components/ServerMenu';
 import Items from './components/Items';
 
-import CustomerMenu from './components/CustomerMenu';
+import CustMainPage from './components/customer/CustMainPage';
+import PublicMenu from './customer/PublicMenu';
+import StoreFinder from './components/customer/StoreFinder';
+
+import CustomerViewContainer from './components/customer/CustomerViewContainer';
 import CustomerCheckout from './components/CustomerCheckout';
 import Container from './customer/container';
 import Entree from "./customer/entreeOption";
@@ -41,7 +46,7 @@ class App extends Component {
   }
 
   // callAPI = () => {
-  //     fetch("http://localhost:3000/roster?id=2")
+  //     fetch("http://localhost:5000/roster?id=2")
   //     .then(updateUI(res.item_id));
   //         .then(res => res.text())
   //         .then(res => this.setState({ apiResponse: res }, () => console.log(res)));
@@ -56,15 +61,16 @@ class App extends Component {
 
 
   callAPIAsync = async () => {
-    // console.log((await fetch("http://localhost:3000/roster?id=2")).text());
-    return (await fetch("http://localhost:3000/roster?id=2")).text();
+    // console.log((await fetch("http://localhost:5000/roster?id=2")).text());
+    return (await fetch("http://localhost:5000/roster?id=2")).text();
   }
 
   render() {  
     return (  
       <Router>
         <Routes>
-          <Route path = "/" element = {<HomePage />}></Route>
+          <Route path = "/" element = {<LoginPage />}></Route>
+          <Route path = "/View" element = {<HomePage />}></Route>
 
           <Route path = "/ServerMenu" element = {<ServerMenu />}></Route>
           <Route path = "/ServerMenu/Checkout" element = {<ServerCheckout />}></Route>
@@ -76,7 +82,11 @@ class App extends Component {
           <Route path="/manager/employee" element={<Employee/>}/>
           <Route path="/manager/accessibility" element={<Accessibility/>}/>
 
-          <Route path = "/CustomerMenu" element = {<CustomerMenu />}></Route>
+          <Route path = "/CustMainPage" element = {<CustMainPage />}></Route>
+          <Route path = "/CustMainPage/PublicMenu" element = {<PublicMenu />}></Route>
+          <Route path = "/CustMainPage/StoreFinder" element = {<StoreFinder />}></Route>
+
+          <Route path = "/CustomerMenu" element = {<CustomerViewContainer />}></Route>
           <Route path = "/CustomerMenu/Checkout" element = {<CustomerCheckout />}></Route>
           <Route path=  "/CustomerMenu/entrees" element={<Entree />} />
           <Route path=  "/CustomerMenu/sides" element={<Side />} />
@@ -84,6 +94,7 @@ class App extends Component {
           <Route path=  "/CustomerMenu/ordering" element={<Container />} />
             
           <Route path="*" element={<ErrorPage/>}/>
+          
         </Routes>
       </Router>
     );

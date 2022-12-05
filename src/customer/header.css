@@ -1,5 +1,7 @@
 .header{
     background-color:  black;
+    position: relative;
+    border: 20px solid #8b0909;
 }
 
 .img {
@@ -9,11 +11,25 @@
     width: 10%;
     height: 10%;
 }
-.optionBtn {
-    text-decoration: none;
+
+
+.header .addToCart {
+    position: absolute;
+    top: 0px;
     font-size: 14px;
     font-weight: bold;
-    color: rgb(0, 0, 0);
+    background-color: #8b0909;
+    color: white;
+    border: 2px solid #000000;
     padding: 5px 15px;
+    border-radius: 10px;
     margin: 0px 5px;
+  }
+  
+.header .addToCart:hover, .header .addToCart:focus {
+    background: #000000;
+    border: none;
+    color: rgb(255, 255, 255);
+    border: 1px solid #ffffff;;
+    transition: 0.5s ease-in-out;
   }

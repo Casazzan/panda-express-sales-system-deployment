@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "emerald-ether-361015",
+  "private_key_id": "a419d3184080f0e6eee226de649544a8fcfa982a",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCxe5pJxJPMVkil\nfxIANcbmHqy6lp84qiDdChsSOUQjk4HNE4JEa3HPVxIgYO3fID84Gt+U4A5ieB4/\n6sn5aPARoNC/no1iPW3An53UBIku2uqCAo50Mr36GpUaNlqpwnMH3J6qFyOUxvZZ\nWyyDwqaTxMdJ3C0gBRygW0HfKZ7q/B7X+CL2CnbBWRMqWVp0/pzAZ0viPCDFUWT8\nc8Hc0ySy/Jq2wGkkAS08iCYTHN1vZkOxCkVIO7Hc72WDf5dV9YPRebvHya57HLEi\nWRLl0HIZi40Oev/PhyjMB3MS4SH+lcbyEkrWey7v+Qc1e5/yRiLaFYXZKxt7uQut\nZu+rQfjpAgMBAAECggEABkLeBowwypygo3YAJJHBGo0qesqlg1I9Jo8ctV/fz4F8\nqsdtaQyBT1c7BHlm6uAwWsJX8OCWoVKrfoXB6lKRZY3Oz3PAeR7BqHH5F2mxjT2b\n2EpOzDqeCRy29d3FBQgfFr/puQZn8u+x8SUORPew+LWQckKaNO75O478m+rT+GYt\nbduZFsLGpNrAMqUmEUbftt+AGoX/bxX0d44l0SrLFKQvizDn/fDI9pYlwCpWgC/t\nl2etUKF2qL+jpAtqviAhqyvwkUkdwKyz3m8E7M9EF8K/pRj+Dj+yizWN8gkVzd02\nhX9biHmHF6h/APWzi4bm4S58zly6gtkQh5az7L7CoQKBgQDuiPtIm+lzQ/PwKvdS\n51fJwwd9PmoomHBltjlZF124Z9IEOBxPjvjzDv3psWiIhKfVkmyud43SFTkO5gGm\nFlbEeJyjp7Cbb2/CzExM6BxZqImZv/NlQSheuG8tUepB2T3niH2Ns10JqnFUZuQB\nIW7R9aRhuCkbZ9heZCTHJSzK/wKBgQC+ekdgvAa6AhzTkBB0rsPyPiAkVvb09HnZ\ndcXF24lTja7/FvN4feo7Ih91QrDvp5iWDhZsQxWXyMlXF9aocOhK8Jo+hcevouCw\n3iU0SzDlLArf1f0RVtAV70P+DF2lzG2ITXhHV7TIIUHeDPbKFanff8AziV0kcWC+\n7hrLIbBEFwKBgENdE/nxbgBLVHyi5a3X/4bPOTI5iilkw3k1+QQcAS+uwjTG09fz\n/IJH3ZU9sNO9AtjhvSeYQ8jsjWyTsCuDa4WYukPNe6ap1dohb/rYIgl/+zwcZVRX\nDluRonQeChYGj+DvPuXhnYi5RcAcPo/DLVTGFmIybAl9TjF5/pju+rNpAoGATFKK\nz0QIHfhCvLL5JQfyE9q43lbKVZSwTmZWfNVezU/0UtpLbHhnppIhsMasRxsMlPPI\nIFExEcSuiGtQ4+V57q1B4NOSE9pb1gLtPWrziKCBKvd/k7cJYgChaeZij9C+AuOn\n0k5ebeKFlgfzyz2q95ck2IGuBLA5Z8fYjJRPILkCgYBonfTt6hE1mzV1sFF3XSTq\nzT3TYDSBVB84nllUE5voVZ8m2CFQu+x9iZxBiy9RxMUbGzGvQPbBa4iNi+EhbSjV\nJEuSCm20F7xojNtkp8/OrwE1emWOuP0Ue7wtgnBt6idOeir0ogaTwYyz/nCDNULO\nbcJZVLLBiFEQWrossXKmsg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "translate-panda@emerald-ether-361015.iam.gserviceaccount.com",
+  "client_id": "118273489171584763739",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/translate-panda%40emerald-ether-361015.iam.gserviceaccount.com"
+}
+

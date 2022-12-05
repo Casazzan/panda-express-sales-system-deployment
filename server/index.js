@@ -8,11 +8,12 @@ const roster = require('./roster');
 const dish_list = require('./dish_list');
 const order_history = require('./order_history');
 const report = require('./report');
+const emails = require('./authorized_emails');
 const cors = require("cors");
 
 // Create express app
 const app = express();
-const port = 3000;
+const port = 5000;
 // Create pool
 const pool = new Pool({
     user: process.env.PSQL_USER,
@@ -51,6 +52,7 @@ app.use('/roster', roster);
 app.use('/order_history', order_history);
 app.use('/dish_list', dish_list);
 app.use('/report', report);
+app.use('/authorized_emails', emails);
 
 
 

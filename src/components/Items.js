@@ -1,14 +1,20 @@
 import React from 'react'
 import '../index2.css';
 import ItemChoiceButton from './ItemChoiceButton';
+import ServerDishChoiceCurrentOrder from './ServerDishChoiceCurrentOrder';
+import TotalPrice from './TotalPrice';
+import PandaLogo from './panda-logo.png';
 import { useNavigate } from 'react-router-dom';
+import MakeSeasonal from './MakeSeasonal';
 
-const Items = () => {
+const Items = (props) => {
     let navigate = useNavigate();
 
     var test = [[[""]]];
 
     const addToCart = (itemToAdd, index) => {
+
+
       var mylistoforders = JSON.parse(localStorage.getItem('CurrentOrder'));
 
       
@@ -18,10 +24,16 @@ const Items = () => {
       mylistoforders[mylistoforders.length-1][index][thirdindex] = itemToAdd;
 
       localStorage.setItem('CurrentOrder', JSON.stringify(mylistoforders));
+
+      window.location.reload();
     }
 
     return (
       <div class = "ItemScreen">
+          <img class = "GoHome" id = "gohomeItems" src={PandaLogo} onClick={() => {navigate("/ServerMenu")}}/>
+          <div class = "ServerItemOrder"><ServerDishChoiceCurrentOrder />
+            <div id = "ServerItemPrice" onClick={() => {window.location.reload()}}><TotalPrice /></div>
+          </div>
           <div class = "NavButton" id = "ItemAdd" onClick={() => {navigate("/ServerMenu")}}><ItemChoiceButton Name = "Add To Order" /></div>
           <div id = "ItemButtons">
             <div class = "EntreeButton" id = "honey_seasame_chicken" onClick={() => {addToCart("honey_seasame_chicken", 1)}}><ItemChoiceButton Name = "HS CKN"/></div>
@@ -44,6 +56,9 @@ const Items = () => {
             
             <div class = "AppButton" id = "chicken_egg_roll" onClick={() => {addToCart("chicken_egg_roll", 3)}}><ItemChoiceButton Name = "APP ER"/></div>
             <div class = "AppButton" id = "crispy_shrimp" onClick={() => {addToCart("crispy_shrimp", 3)}}><ItemChoiceButton Name = "APP SHRMP"/></div>
+
+            <MakeSeasonal addToCart = {(item, food) => addToCart(item, food)}/>
+
           </div>
       </div>
       )

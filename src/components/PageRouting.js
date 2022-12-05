@@ -6,8 +6,12 @@ import ServerCheckout from './ServerCheckout';
 import ServerMenu from './ServerMenu';
 import Items from './Items';
 
+import CustMainPage from './customer/CustMainPage';
+import PublicMenu from "../customer/PublicMenu";
+import StoreFinder from './customer/StoreFinder';
+
 import CustomerCheckout from './CustomerCheckout';
-import CustomerMenu from './CustomerMenu';
+import CustomerViewContainer from './customer/CustomerViewContainer';
 import Container from '../customer/container';
 import Entree from "../customer/entreeOption";
 import Side from "../customer/sideOption";
@@ -36,7 +40,11 @@ const PageRouting = () => {
             <Route path= "/Manager/employee" element={<Employee/>}/>
             <Route path= "/Manager/accessibility" element={<Accessibility/>}/>
 
-            <Route path = "/CustomerMenu" element = {<CustomerMenu />}></Route>
+            <Route path = "/CustMainPage" element = {<CustMainPage />}></Route>
+            <Route path = "/CustMainPage/PublicMenu" element = {<PublicMenu />}></Route>
+            <Route path = "/CustMainPage/StoreFinder" element = {<StoreFinder />}></Route>
+
+            <Route path = "/CustomerMenu" element = {<CustomerViewContainer />}></Route>
             <Route path = "/CustomerMenu/Checkout" element = {<CustomerCheckout />}></Route>
             <Route path=  "/CustomerMenu/entrees" element={<Entree />} />
             <Route path=  "/CustomerMenu/sides" element={<Side />} />

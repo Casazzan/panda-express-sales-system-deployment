@@ -1,0 +1,50 @@
+SCRUM Meeting 3 for ProjectName
+Prepared by: 11/8
+Meeting Date:
+Meeting Attendees
+Alex De Young
+ Devan Shea
+ Nathan Casazza
+Nicole Clements
+Anna Slater 
+Meeting Agenda Items
+Find where everyone is
+Make sure everyone has the backend resources needed to finish their assignment
+Status Update Since Last Meeting
+Accomplishments:
+ Frontend Skeleton for manager and server
+Backend API to server fully working
+
+Tasks Completed:
+Task Description
+Assigned to
+Completed? (yes/no)
+Complete frontend manager
+Anna
+no
+Complete Backend
+Nathan
+yes
+Complete frontend customer
+Alex/Nicole
+no
+Complete frontend server
+Devan
+no
+
+Before The Next Meeting
+Plans:
+Finish the rest of the frontend and once done help work with the others to do the same
+Start looking at authentication
+
+Task Assignments:
+Task Description
+Assigned to
+Look at authentication
+Devan
+Look at google maps
+Alex
+
+Minutes from Previous Meeting
+Nathan has done very well converting the backend into functions we can use. We have completed most of the frontend in preparation for the demo. We will add the APIs to the frontend this next sprint. The frontend also needs to be connected and Devan is going to do that once everyone finishes merging their branches we will have that set up. We are a bit behind the curve and everyone tried to do it last minute which is not good. The end product will end up suffering and everyone is vowing to do better. 
+

@@ -10,12 +10,12 @@ class Inventory extends Component {
   }
 
   getSummary = () => {
-      fetch("http://localhost:3000/inventory/summary")
+      fetch("http://localhost:5000/inventory/summary")
           .then(res => res.text())
           .then(res => this.setState({ apiResponse: res }, () => console.log(res)));
   }
   getItemPrice = () => {
-      fetch("http://localhost:3000/inventory/summary")
+      fetch("http://localhost:5000/inventory/summary")
           .then(res => res.text())
           .then(res => this.setState({ apiResponse: res }, () => console.log(res)));
   }
@@ -26,7 +26,6 @@ class Inventory extends Component {
         <div className="Right">
         <InventoryTabs />
         <p className="App-intro">{this.state.apiResponse}</p>
-            <button onClick={this.getSummary}>Get Current Inventory</button>
         </div>
       </div>
     )
@@ -34,4 +33,3 @@ class Inventory extends Component {
 }
 
 export default Inventory; 
-

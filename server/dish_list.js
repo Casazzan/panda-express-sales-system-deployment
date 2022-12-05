@@ -64,9 +64,20 @@ router.get('/summary', (req, res) => {
         });
 });
 
-// http://localhost:3000/dish_list/price?dish_id=1&item=1&item=2&item=14&item=15&item=20
-// http://localhost:3000/dish_list/price?dish_id=1&item=honey_seasame_chicken&item=black_pepper_angus_steak&item=fried_rice
+// http://localhost:5000/dish_list/price?dish_id=1&item=1&item=2&item=14&item=15&item=20
+// http://localhost:5000/dish_list/price?dish_id=1&item=honey_seasame_chicken&item=black_pepper_angus_steak&item=fried_rice
 router.get('/price', async (req, res) => {
+    let dishId = req.query.dish_id;
+    let dish = await getDish(dishId); 
+
+    let finalPrice = Number(dish.price);
+
+    if(!req.query.item) {
+        res.send({"price": finalPrice});
+        return;
+    }
+
+    
     let itemIDList = req.query.item;
     let itemPromiseList = [];
     if(Array.isArray(itemIDList)){ //Have to Check if it's an array or else when there's a single item it iterates over every letter
@@ -79,14 +90,6 @@ router.get('/price', async (req, res) => {
     }
 
     const itemList = await Promise.all(itemPromiseList);
-
-    console.log(itemIDList);
-    console.log(itemList);
-
-    let dishId = req.query.dish_id;
-    let dish = await getDish(dishId); 
-
-    let finalPrice = Number(dish.price);
 
     let entrees = [];
     let sides = [];
@@ -113,6 +116,16 @@ router.get('/price', async (req, res) => {
 })
 
 router.get('/price_by_id', async (req, res) => {
+    let dishId = req.query.dish_id;
+    let dish = await getDish(dishId); 
+
+    let finalPrice = Number(dish.price);
+
+    if(!req.query.item) {
+        res.send({"price": finalPrice});
+        return;
+    }
+
     let itemIDList = req.query.item;
     let itemPromiseList = [];
     for(let i = 0; i < itemIDList.length; i++) {
@@ -123,12 +136,6 @@ router.get('/price_by_id', async (req, res) => {
 
     console.log(itemIDList);
     console.log(itemList);
-
-    let dishId = req.query.dish_id;
-    let dish = await getDish(dishId); 
-
-    let finalPrice = Number(dish.price);
-
     let entrees = [];
     let sides = [];
     let appetizers = [];

@@ -19,10 +19,10 @@ const RosterDisplay = (props) => {
     const item = props.rosterList[i];
     if (item.is_manager) {
       console.log("HERE");
-      manager = "true";
+      manager = "Manager";
     }
     else {
-      manager = "false";
+      manager = "Regular Employee";
     }
     const RosterDisplay = (
       <tr>
@@ -33,7 +33,7 @@ const RosterDisplay = (props) => {
       items.push(RosterDisplay);
   }
   return (
-    <table>
+    <table className="RosterTable">
       {items}
     </table>
     )

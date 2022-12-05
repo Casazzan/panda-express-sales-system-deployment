@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import EmployeeTabs from "../components/EmployeeTabs";
 import {Component} from 'react';
 import Sidebar from '../components/Sidebar'
+import logo from '../team52.png'
 
 class Employee extends Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class Employee extends Component {
   }
 
   getSummary = () => {
-      fetch("http://localhost:3000/roster?id=2")
+      fetch("http://localhost:5000/roster?id=2")
           .then(res => res.text())
           .then(res => this.setState({ apiResponse: res }, () => console.log(res)));
   }
@@ -20,11 +21,6 @@ class Employee extends Component {
         <Sidebar />
         <div className="Right">
         <EmployeeTabs />
-        <p className="App-intro">{this.state.apiResponse}</p>
-            <button onClick={this.getSummary}>Get Employee 2</button>
-        </div>
-        <div className="Footer">
-        Footer
         </div>
       </div>
     )
@@ -32,4 +28,3 @@ class Employee extends Component {
 }
 
 export default Employee; 
-

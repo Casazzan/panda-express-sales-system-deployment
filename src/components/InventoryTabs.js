@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../App.css";
 import Critical from './CriticalItemsDisplay'
 import Summary from './InventoryDisplay'
+import InventorySelector from './InventorySelector'
 
 // https://www.w3schools.com/html/html_tables.asp
 // table 
@@ -24,16 +25,57 @@ function InventoryTabs() {
     setToggleState(index);
   };
 
+  useEffect(() => {
+    let ignore = false;
+
+    if (!ignore)  queryCrit()
+    return () => { ignore = true; }
+    },[]);
+  
+  useEffect(() => {
+    let ignore = false;
+
+    if (!ignore)  queryInventory()
+    return () => { ignore = true; }
+    },[]);
+
+    const inputchangehandler = (event) => {
+    setName(event.target.value);
+    console.log(name);
+    }
+
+
   const queryCrit = async() => {
-    const promise = fetch(`http://localhost:3000/report/restock`); 
+    const promise = fetch(`http://localhost:5000/report/restock`); 
     const response = await promise;
     const result = await response.json();
     console.log(result);
     setCriticalResponse(result);
   };
 
+  const updateServings = async() => {
+    var selected = document.getElementById("selectedItemDiv").innerHTML;
+    if (selected != "") {
+      const promise = fetch(`http://localhost:5000/inventory/update_servings?id=${selected}&servings=${updateItemAmount}`); 
+      const response = await promise;
+      setUpdateItemAmount(0);
+    }
+  };
+
+  const deleteItem = async() => {
+    var selected = document.getElementById("selectedItemDiv").innerHTML;
+    /*
+    TODO fix after edited
+    if (selected != "") {
+      const promise = fetch(`http://localhost:5000/inventory/delete?id=${selected}`); 
+      const response = await promise;
+      setUpdateItemAmount(0);
+    }
+    */
+  };
+
   const queryInventory = async() => {
-    const promise = fetch(`http://localhost:3000/inventory/summary`); 
+    const promise = fetch(`http://localhost:5000/inventory/summary`); 
     const response = await promise;
     const result = await response.json();
     console.log(result);
@@ -41,7 +83,7 @@ function InventoryTabs() {
   };
 
   const restockInventory = async() => {
-    const promise = fetch(`http://localhost:3000/inventory/summary`); 
+    const promise = fetch(`http://localhost:5000/inventory/summary`); 
     const response = await promise;
     const result = await response.json();
     console.log(result);
@@ -51,6 +93,19 @@ function InventoryTabs() {
   // reset values to 0
   // setname ... 0
   const addItem = async() => {
+    const firstPromise = fetch(`http://localhost:5000/inventory/nextID`); 
+    const firstResponse = await firstPromise;
+    const result = await firstResponse.json();
+    var newID = result.nextID;
+    console.log("inserting "+ name, newID, price, initial, restock, critical, type);
+    const promise = fetch(`http://localhost:5000/inventory/add?id=${newID}&name=${name}&servings=${initial}&restock_quantity=${restock}&price=${price}&food_type=${type}&minimum_amount=${critical}`); 
+    const response = await promise;
+    setName("");
+    setPrice(0);
+    setInitial(0);
+    setRestock(0);
+    setType('entree');
+    setCritical(0);
   };
 
 
@@ -83,10 +138,9 @@ function InventoryTabs() {
         >
           <h2>Current Inventory</h2>
 
-          <button className="SubmitCritical" onClick={() => queryInventory()}> View Inventory</button>
           <Summary inventoryList={inventorySummary}/>
           <p></p>
-          <button className="SubmitCritical" onClick={() => queryCrit()}> View Critical Items</button>
+          <h2>Critical Items</h2>
           <Critical itemList={criticalItems}/>
           <p></p>
       </div>
@@ -97,14 +151,10 @@ function InventoryTabs() {
           <h2>Add Inventory Item</h2>
           <hr />
           <p></p>
-          <form>
             <label> Enter Name </label>
-            <input
-              type="text"
-              required
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
+            <input type="text" name="name" 
+                  onChange={inputchangehandler} 
+                  value = {name}/>
             <p></p>
             <label> Enter Price </label>
             <input
@@ -148,16 +198,13 @@ function InventoryTabs() {
               <option value="appetizer">appetizer</option>
             </select> 
             <p></p>
-            <button className="SubmitButton">Add Item</button>
+            <button 
+              className="SubmitButton"
+              onClick={() => addItem()}>
+              Add Item
+            </button>
             <p>
-              {name}
-              {price}
-              {type}
-              {initial}
-              {restock}
             </p>
-
-          </form>
         </div>
 
         <div
@@ -171,28 +218,9 @@ function InventoryTabs() {
             <p></p>
           <hr />
           <h2>Manually Update Inventory</h2>
-          <form>
             <label>Select Item to Change: </label>
-            <select
-              value={type}
-              onChange={(e) => setUpdateItemName(e.target.value)}
-            >
-              <option value="sweetfire_chicken_breast">sweetfire_chicken_breast</option>
-              <option value="kung_pao_chicken">kung_pao_chicken</option>
-              <option value="black_pepper_chicken">black_pepper_chicken</option>
-              <option value="grilled_teriyaki_chicken">grilled_teriyaki_chicken</option>
-              <option value="broccoli_beef">broccoli_beef</option>
-              <option value="bejing_beef">bejing_beef</option>
-              <option value="honey_walnut_shrimp">honey_walnut_shrimp</option>
-              <option value="mushroom_chicken">mushroom_chicken</option>
-              <option value="eggplant_tofu">eggplant_tofu</option>
-              <option value="mixed_vegetables">mixed_vegetables</option>
-              <option value="chow_mein">chow_mein</option>
-              <option value="fried_rice">fried_rice</option>
-              <option value="brown_steamed_rice">brown_steamed_rice</option>
-              <option value="crispy_shrimp">crispy_shrimp</option>
-              <option value="string_bean_chicken_breast">string_bean_chicken_breast</option>
-            </select> 
+            <InventorySelector 
+              rosterList={inventorySummary}/>
             <p></p>
             <label>Input New Amount: </label>
             <input
@@ -202,10 +230,16 @@ function InventoryTabs() {
               onChange={(e) => setUpdateItemAmount(e.target.value)}
             />
             <p></p>
-            <button className="SubmitCritical">Submit</button>
-          </form>
-        {updateItemName}
-        {updateItemAmount}
+            <button 
+              className="SubmitCritical"
+              onClick={() => updateServings()}
+              id="update"
+              >Submit</button>
+            <button 
+              className="SubmitCritical"
+              onClick={() => deleteItem()}
+              id="delete"
+              >Delete</button>
         </div>
       </div>
     </div>

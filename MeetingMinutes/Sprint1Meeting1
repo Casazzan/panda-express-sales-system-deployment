@@ -1,0 +1,46 @@
+SCRUM Meeting 1 for Panda Express Point of Sale System
+Prepared by: Alex De Young
+Meeting Date: 
+Meeting Attendees
+ Alex De Young
+ Devan Shea
+ Nathan Casazza
+Nicole Clements
+Anna Slater 
+Meeting Agenda Items
+ Backend database communication
+Frontend
+Status Update Since Last Meeting
+Accomplishments:
+ Set up systems with NodeJS and React
+Backend working to communicate with the database
+
+Tasks Completed:
+Task Description
+Assigned to
+Completed? (yes/no)
+Backend Database communication
+Nathan
+Yes
+Set up systems with NodeJS and React in a repository
+Alex
+Yes
+
+Before The Next Meeting
+Plans:
+ Make a skeleton framework for the frontend manager side
+ Make a skeleton framework for the frontend customer side
+
+Task Assignments:
+Task Description
+Assigned to
+Make a skeleton framework for the frontend manager side
+Anna
+Make a skeleton framework for the frontend server side
+Devan
+Make a skeleton framework for the frontend customer side
+Nicole/Alex
+
+Minutes from Previous Meeting
+We discussed backend database communication and setting up the environment we will be working in. We pushed the repository to github and installed everything on everyone’s computer, making sure it was working so everyone is able to develop without errors caused by the database. Nathan is also probably from a non-dirt village in Italy. The next meeting we are going to talk about strides made with react and the framework being developed. We are also going to make sure Nathan is doing well converting the backend Java from project 2 to Javascipt for project 3.
+
