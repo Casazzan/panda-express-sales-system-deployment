@@ -1,3 +1,8 @@
+/*
+ * @param {Array} orders - The React component holding the user's current order.
+ * @param {double} price - React component for the current price.
+ * @param {Function} updateOrderCallback - Recat function called when the user selects something and an current order screen needs to be updated.
+*/
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./CustMainPage.css";
@@ -7,7 +12,11 @@ import CustomerViewBtn from "../CustomerViewBtn";
 import Logo from './pandaLogo.png';
 import Text from 'react-text';
 
-
+/**
+ * Main page for the screen the Public can access
+ * @constructor
+ * @param {Component} props - React props passed in, contains a 3 dimensional array holding current order, a double holding the current price, and a function to update the current order so the display is correct when the user selects an item.
+ */
 const CustMainPage = (props) => {
 
   let navigate = useNavigate();

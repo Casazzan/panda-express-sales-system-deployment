@@ -4,9 +4,15 @@ import Container from "../../customer/container";
 import CustomerMenu from './CustomerMenu';
 import CustomerCheckout from '../CustomerCheckout';
 import '../../index.css';
-
+    /**
+    * Master page for all of the Customer React Components
+    */
 class CustomerViewContainer extends React.Component {
-
+    /**
+     * Constructor for the CustomerViewContainer
+     * @constructor
+     * @param {Component} props - Holds the current order, the current price, and the screen the user is currently on. Also has localStorage code for persistance when the screen is reloaded.
+     */
     constructor(props) {
         super(props);
         this.state = {
@@ -24,11 +30,21 @@ class CustomerViewContainer extends React.Component {
             this.state.currentOrder = currentOrderFromLocalStorage;
         }
     }
-
+    /**
+     * When the screen is reloaded, makes sure the price is reloaded and displays again.
+     * @function
+     */
     componentDidMount() {  
         this.updatePrice(this.state.currentOrder);
     }
 
+    /**
+     * Queries the database for the price of a dish, taking into account the dish and everything in it
+     * @function
+     * @param {int} dishId - the ID of the entrees dish (bowl, plate, or bigger plate).
+     * @param {string} idString - string of ID's of the items inside the dish.
+     * @returns {double} The price of the dish passed in.
+     */
     callAPIAsyncGetPrice = async (dishId, idString) => {
         //console.log((await (await fetch(`http://localhost:5000/dish_list/price?dish_id=${dishId}${idString}`)).json()));
         const promise = fetch(`http://localhost:5000/dish_list/price?dish_id=${dishId}${idString}`);
@@ -36,7 +52,12 @@ class CustomerViewContainer extends React.Component {
         const result = await response.json();
         return result.price;
     }
-
+    /**
+     * Calculates the price of all the dishes in the current order
+     * @function
+     * @param {int} MyListOfOrders - 3 Dimensional array containing the user's current order
+     * @return {double} Price of all the dishes in the current order
+     */
     returnPrice = async (MyListOfOrders) => {
         if (MyListOfOrders[0][0][0] == "" && MyListOfOrders.length == 1){
             // console.log("MyListOfOrders is empty");
@@ -97,7 +118,10 @@ class CustomerViewContainer extends React.Component {
         }
         return totalPrice.toFixed(2);
     }
-
+    /**
+     * Updates the price displayed when the user makes a change to their order
+     * @param {Array} order - 3 Dimensional array containing the user's current order
+     */
     async updatePrice(order) {
         const newPrice = await this.returnPrice(order);
         this.setState((prevState) => {
@@ -108,7 +132,11 @@ class CustomerViewContainer extends React.Component {
         });
 
     }
-
+    /**
+     * Updates the current order displayed when the user adds or removes something
+     * @function
+     * @param {Array} order - 3 Dimensional array containing the user's updated current order
+     */
     updateOrder(order) {
         //Alex code for persistance
         localStorage.setItem("CurrentOrder", JSON.stringify(order));
@@ -124,6 +152,10 @@ class CustomerViewContainer extends React.Component {
         this.updatePrice(order);
     }
 
+    /**
+     * Updates the screen the user is currently on
+     * @param {Component} Screen - Component holding the new value of the screen the user switched to
+     */
     updateScreen(screen) {
         this.setState((prevState) => {
             return ({
@@ -132,7 +164,11 @@ class CustomerViewContainer extends React.Component {
             })
         });
     }
-
+     /**
+     * Creates a container to hold the information for the user's current order
+     * @function
+     * @param {Component} containerType
+     */
     createContainer(containerType) {
             var orderArray = [];
             var dishArray = [containerType];
@@ -145,7 +181,12 @@ class CustomerViewContainer extends React.Component {
             this.updateOrder(mylistoforders);
             this.updateScreen("ordering");
     }
-
+     /**
+     * Updates the order being displayed when something is added to it.
+     * @function
+     * @param {string} itemToAdd - the name of the item being added to the order
+     * @param {string} index - the order the item is being added to
+     */
     addToCart = (itemToAdd, index) => {
         var mylistoforders = this.state.currentOrder;
       
@@ -156,11 +197,17 @@ class CustomerViewContainer extends React.Component {
       
         this.updateOrder(mylistoforders);
       }
-
+    /**
+     * Switches the user to the landing page for customer
+     * @function
+     */
     homeView() {
         this.updateScreen("container");
     }
-
+     /**
+     * Switches the user to the checkout view for customer
+     * @function
+     */
     checkoutView() {
         this.updateScreen("checkout");
     }
