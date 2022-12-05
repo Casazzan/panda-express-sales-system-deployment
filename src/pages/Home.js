@@ -1,6 +1,8 @@
 import React from 'react'
 import Sidebar from '../components/Sidebar'
+import logo from '../team52.png'
 
+//         <img className="FooterLogo" src={logo}/>
 const Home = () => {
   return (
     <div>
@@ -13,7 +15,6 @@ const Home = () => {
         </div>
       </div>
       <div className="Footer">
-      Footer
       </div>
     </div>
   )

@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import EmployeeTabs from "../components/EmployeeTabs";
 import {Component} from 'react';
 import Sidebar from '../components/Sidebar'
+import logo from '../team52.png'
 
 class Employee extends Component {
   constructor(props) {
@@ -20,9 +21,6 @@ class Employee extends Component {
         <Sidebar />
         <div className="Right">
         <EmployeeTabs />
-        </div>
-        <div className="Footer">
-        Footer
         </div>
       </div>
     )

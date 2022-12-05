@@ -83,6 +83,33 @@ select {
   transition:.7s;
 }
 
+.SubmitLanguage {
+  height: 30px;
+  width: 230px;
+  background-color: #c5292c;
+  color:white;
+  display:block;
+  position:absolute;
+  top:27%;
+  left:50.5%;
+}
+
+.LanguageSelector {
+  height: 30px;
+  width: 230px;
+  display:block;
+  position:absolute;
+  top:20%;
+  left:50.5%;
+}
+
+
+
+.SubmitCritical:hover {
+  background-color: #6e3638;
+  transition:.7s;
+}
+
 .App-header {
   background-color: #b10000;
   min-height: 100vh;
@@ -210,7 +237,7 @@ button {
   background-size:cover;
   min-height:900px;
   background-color:white;
-  font-size: 30px;
+  font-size: 20px;
   color:white;
   text-align:center;
 }
@@ -236,6 +263,13 @@ button {
   font-size: 20px;
   color:white;
   height:150px;
+}
+
+.FooterLogo {
+  right:40%;
+  width:150px;
+  height:150px;
+  position:absolute;
 }
 
 .Sidebar {
