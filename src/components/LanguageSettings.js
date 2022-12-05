@@ -21,7 +21,7 @@ const LanguageSettings = (props) => {
     }
     return ( 
       <div>
-      <select name="language" id="languageSelector" onChange={(e) =>{
+      <select className="LanguageSelector" name="language" id="languageSelector" onChange={(e) =>{
         const selectedLanguage = e.target.value;
         setSelectedLanguage(selectedLanguage);
       }}>

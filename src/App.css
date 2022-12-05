@@ -94,6 +94,17 @@ select {
   left:50.5%;
 }
 
+.LanguageSelector {
+  height: 30px;
+  width: 230px;
+  display:block;
+  position:absolute;
+  top:20%;
+  left:50.5%;
+}
+
+
+
 .SubmitCritical:hover {
   background-color: #6e3638;
   transition:.7s;
@@ -226,7 +237,7 @@ button {
   background-size:cover;
   min-height:900px;
   background-color:white;
-  font-size: 30px;
+  font-size: 20px;
   color:white;
   text-align:center;
 }
