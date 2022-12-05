@@ -10,7 +10,6 @@ function Accessibility() {
   const [language, setLanguage] = useState('');
   const [languages, setLanguages] = useState(null);
   const [translatedText, setTranslatedText] = useState('Submit');
-  const [color, setColor] = useState('');
 
   window.addEventListener('storage', (e) => {
       console.log("change to local storage!");
@@ -78,6 +77,7 @@ function Accessibility() {
   useEffect(() => {
     console.log("use effect here")
     getLanguages()
+    changeText("Submit")
   }, [])
 
   const changeLanguage = () => {

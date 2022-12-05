@@ -7,27 +7,27 @@ import SettingsAccessibilityIcon from '@mui/icons-material/SettingsAccessibility
 
 export const SidebarData = [
   {
-    title: "Home",
+    title: JSON.parse(localStorage.getItem("home")),
     icon: <HomeIcon />,
     link: "/manager"
   },
   {
-    title: "Sales",
+    title: JSON.parse(localStorage.getItem("sales")),
     icon: <AttachMoneyIcon />,
     link: "/manager/sales"
   },
   {
-    title: "Employee",
+    title: JSON.parse(localStorage.getItem("employee")),
     icon: <BadgeIcon />,
     link: "/manager/employee"
   },
   {
-    title: "Inventory",
+    title: JSON.parse(localStorage.getItem("inventory")),
     icon: <AssessmentIcon />,
     link: "/manager/inventory"
   },
   {
-    title: "Accessability",
+    title: JSON.parse(localStorage.getItem("accessibility")),
     icon: <SettingsAccessibilityIcon />,
     link: "/manager/accessibility"
   },
