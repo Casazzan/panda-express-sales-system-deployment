@@ -145,3 +145,15 @@ Ex Response: {"nextID":11}
 Route: /roster/update_type?id={employee_id}&manager={1 for manager, 0 for not}
 Ex: http://localhost:5000/roster/update_type?id=4&manager=1
 Ex Response: No Response
+
+### Authorized Emails
+
+#### Get Full List Of Emails
+Route: /authroized_emails/summary
+Ex: http://localhost:5000/authorized_emails/summary
+Ex Response: [{"email":"alex.m.deyoung@tamu.edu"},{"email":"casazzan@tamu.edu"},...]
+
+#### Add email
+Route: /authorized_emails/add?email={email}
+Ex: http://localhost:5000/authorized_emails/add?email={email}
+Ex Response: No Response
