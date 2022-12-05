@@ -56,6 +56,8 @@ const Accessibility = () => {
           <Settings />
         </div>
       </div>
+      <div className="Footer">
+      </div>
     </div>
   )
 }

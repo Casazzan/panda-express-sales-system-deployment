@@ -265,6 +265,13 @@ button {
   height:150px;
 }
 
+.FooterLogo {
+  right:40%;
+  width:150px;
+  height:150px;
+  position:absolute;
+}
+
 .Sidebar {
   height:50vw;
   width: 250px;

@@ -22,9 +22,6 @@ class Employee extends Component {
         <div className="Right">
         <EmployeeTabs />
         </div>
-        <div className="Footer">
-          <img className="FooterLogo" src={logo}/>
-        </div>
       </div>
     )
   }
