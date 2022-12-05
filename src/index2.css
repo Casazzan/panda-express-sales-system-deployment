@@ -83,11 +83,6 @@ body {
   flex-direction: column;
   justify-content: space-evenly;
 }
-#customer{
-  font-size: max(1.3vw,25px);
-  font-weight: bold;
-  block-size: max(1.3vw,100px);
-}
 
 .HomePageButton{
   align-self: center;
