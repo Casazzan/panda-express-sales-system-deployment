@@ -9,11 +9,7 @@ const clientId = '569817754455-gefflnacglb4mubcrlp94bqknusirsld.apps.googleuserc
 
 var wasSuccessful = false;
 
-const onSuccess = (res) => {
-    
-    console.log('success:', res);
-    wasSuccessful = true;
-};
+
 const onFailure = (err) => {
     console.log('failed:', err);
     wasSuccessful = false;
@@ -53,6 +49,17 @@ const onFailure = (err) => {
 //   }
 const LoginPage = () => {
     let navigate = useNavigate();
+    const onSuccess = (res) => {
+        console.log('success:', res);
+        wasSuccessful = true;
+        navigate("/View")
+        var auth2 = gapi.auth2.getAuthInstance();
+        var profile = auth2.currentUser.get().getBasicProfile();
+        console.log("NAME-->"+profile.getName());
+        console.log("Email-->"+profile.getEmail());
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.disconnect();
+    };
     useEffect(() => {
         const initClient = () => {
               gapi.client.init({
@@ -61,6 +68,7 @@ const LoginPage = () => {
             });
          };
          gapi.load('client:auth2', initClient);
+         
      });
     return (
       <div class = "HomePageScreen">
@@ -72,7 +80,7 @@ const LoginPage = () => {
             )}
             buttonText="Manager Settings"
             // onSuccess={onSuccess}
-            onSuccess={() => {navigate("/View")}}
+            onSuccess={onSuccess}
             onFailure={onFailure}
             cookiePolicy={'none'}
             />
