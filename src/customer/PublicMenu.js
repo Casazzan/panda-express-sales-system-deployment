@@ -31,7 +31,6 @@ class PublicMenu extends React.Component {
     return (
       <div className="container">
 
-        <div id="google_translate_element"></div>
         <PublicHeader callback={(view) => this.setView(view)} goBack={() => this.props.goBack()}/>
         {content}
         
