@@ -22,14 +22,14 @@ function EmployeeTabs() {
     var selected = document.getElementById("selectedEmployeeDiv").innerHTML;
     console.log(selected);
     console.log("delete employee: ", selected);
-    const promise = fetch(`http://localhost:5000/roster/delete?id=${selected}`); 
+    const promise = fetch(`http://localhost:5001/roster/delete?id=${selected}`); 
     const response = await promise;
   }
 
   const updateEmployee = async() => {
     var selected = document.getElementById("selectedEmployeeDiv").innerHTML;
     console.log("update employee: ", selected, changeType, email);
-    const promise = fetch(`http://localhost:5000/roster/update_type?id=${selected}&manager=${changeType}`); 
+    const promise = fetch(`http://localhost:5001/roster/update_type?id=${selected}&manager=${changeType}`); 
     const response = await promise;
   }
 
@@ -41,7 +41,7 @@ function EmployeeTabs() {
     },[]);
 
   const queryRosterSummary = async() => {
-    const promise = fetch(`http://localhost:5000/roster/summary`); 
+    const promise = fetch(`http://localhost:5001/roster/summary`); 
     const response = await promise;
     const result = await response.json();
     console.log(result);
@@ -58,7 +58,7 @@ function EmployeeTabs() {
   }
 
   const addEmployee = async() => {
-    const firstPromise = fetch(`http://localhost:5000/roster/nextID`); 
+    const firstPromise = fetch(`http://localhost:5001/roster/nextID`); 
     const firstResponse = await firstPromise;
     const result = await firstResponse.json();
     var newID = result.nextID;
@@ -67,7 +67,7 @@ function EmployeeTabs() {
     console.log("type: ", type);
     console.log(result.nextID);
     console.log("inserting "+ userInput, newID, type);
-    const promise = fetch(`http://localhost:5000/roster/add?id=${result.nextID}&name=${userInput}&manager=${type}`); 
+    const promise = fetch(`http://localhost:5001/roster/add?id=${result.nextID}&name=${userInput}&manager=${type}`); 
     const response = await promise;
     setUserInput("");
     setType(0);
@@ -76,7 +76,7 @@ function EmployeeTabs() {
 
   const addEmail = async() => {
     console.log("inserting "+ email);
-    // const promise = fetch(`http://localhost:5000/roster/add?id=${result.nextID}&name=${userInput}&manager=${type}`); 
+    // const promise = fetch(`http://localhost:5001/roster/add?id=${result.nextID}&name=${userInput}&manager=${type}`); 
     // const response = await promise;
     setEmail("");
     // console.log("Added: " + userInput + newID + type);

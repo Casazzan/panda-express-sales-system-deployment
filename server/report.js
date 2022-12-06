@@ -16,16 +16,16 @@ const pool = new Pool({
 
 /**
  * - Sales Report <br>
- * Route: http://localhost:5000/report/sales <br>
+ * Route: http://localhost:5001/report/sales <br>
  *  <br>
  * - Excess Report <br>
- * Route: http://localhost:5000/report/excess?startDate={Date}&endDate={Date} <br>
+ * Route: http://localhost:5001/report/excess?startDate={Date}&endDate={Date} <br>
  *  <br>
  * - Restock Report <br>
- * Route: http://localhost:5000/report/restock <br>
+ * Route: http://localhost:5001/report/restock <br>
  *  <br>
  * - Sells Together <br>
- * Route: http://localhost:5000/report/sells_together?startDate={Date}&endDate={Date}
+ * Route: http://localhost:5001/report/sells_together?startDate={Date}&endDate={Date}
  * @module
  */
 

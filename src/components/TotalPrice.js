@@ -2,20 +2,20 @@ import React, { Component } from 'react'
 import "../index2.css"
 
 // var callAPIAsyncNameToID = async (itemName) => {
-//     (await fetch(`http://localhost:5000/inventory/${itemName}`)).text();
+//     (await fetch(`http://localhost:5001/inventory/${itemName}`)).text();
 // }
 
 var callAPIAsyncGetPrice = async (dishId, idString) => {
-    //console.log((await (await fetch(`http://localhost:5000/dish_list/price?dish_id=${dishId}${idString}`)).json()));
-    const promise = fetch(`http://localhost:5000/dish_list/price?dish_id=${dishId}${idString}`);
+    //console.log((await (await fetch(`http://localhost:5001/dish_list/price?dish_id=${dishId}${idString}`)).json()));
+    const promise = fetch(`http://localhost:5001/dish_list/price?dish_id=${dishId}${idString}`);
     const response = await promise;
     const result = await response.json();
     return result.price;
 }
 
 var addToOrderHistory = async (dishId, idString) => {
-    //console.log((await (await fetch(`http://localhost:5000/dish_list/price?dish_id=${dishId}${idString}`)).json()));
-    const promise = fetch(`http://localhost:5000/dish_list/price?dish_id=${dishId}${idString}`);
+    //console.log((await (await fetch(`http://localhost:5001/dish_list/price?dish_id=${dishId}${idString}`)).json()));
+    const promise = fetch(`http://localhost:5001/dish_list/price?dish_id=${dishId}${idString}`);
 }
 
 const returnPrice = async (MyListOfOrders) => {

@@ -10,12 +10,12 @@ class Inventory extends Component {
   }
 
   getSummary = () => {
-      fetch("http://localhost:5000/inventory/summary")
+      fetch("http://localhost:5001/inventory/summary")
           .then(res => res.text())
           .then(res => this.setState({ apiResponse: res }, () => console.log(res)));
   }
   getItemPrice = () => {
-      fetch("http://localhost:5000/inventory/summary")
+      fetch("http://localhost:5001/inventory/summary")
           .then(res => res.text())
           .then(res => this.setState({ apiResponse: res }, () => console.log(res)));
   }

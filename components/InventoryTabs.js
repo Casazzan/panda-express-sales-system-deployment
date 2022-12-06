@@ -25,7 +25,7 @@ function InventoryTabs() {
   };
 
   const queryCrit = async() => {
-    const promise = fetch(`http://localhost:5000/report/restock`); 
+    const promise = fetch(`http://localhost:5001/report/restock`); 
     const response = await promise;
     const result = await response.json();
     console.log(result);
@@ -33,7 +33,7 @@ function InventoryTabs() {
   };
 
   const queryInventory = async() => {
-    const promise = fetch(`http://localhost:5000/inventory/summary`); 
+    const promise = fetch(`http://localhost:5001/inventory/summary`); 
     const response = await promise;
     const result = await response.json();
     console.log(result);
