@@ -46,21 +46,16 @@ const returnPrice = async (MyListOfOrders) => {
         }
         var everythingInTheDish = [];
         for (var j = 1; j < MyListOfOrders[i].length; j++){
-            // if (MyListOfOrders[i][j].length == 1){
-            //     everythingInTheDish.push(MyListOfOrders[i][j][0]);
-            // }
-            // else{
-                for (var k = 0; k < MyListOfOrders[i][j].length; k++){
-                    if (MyListOfOrders[i][j][k] === ""){
-                        continue;
-                    }
-                    else{
-                        //push all the id's
-                        everythingInTheDish.push(MyListOfOrders[i][j][k]);
-                        timesRun = timesRun + 1;
-                    }
+            for (var k = 0; k < MyListOfOrders[i][j].length; k++){
+                if (MyListOfOrders[i][j][k] === ""){
+                    continue;
                 }
-            // }
+                else{
+                    //push all the id's
+                    everythingInTheDish.push(MyListOfOrders[i][j][k]);
+                    timesRun = timesRun + 1;
+                }
+            }
         }
         if (timesRun > 0){
 
