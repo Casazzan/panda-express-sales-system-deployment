@@ -47,7 +47,6 @@ const LoginPage = () => {
             <button class = "HomePageButton" id = "customer" onClick={renderProps.onClick}>Login</button>
             )}
             buttonText="Manager Settings"
-            // onSuccess={onSuccess}
             onSuccess={onSuccess}
             onFailure={onFailure}
             cookiePolicy={'none'}
