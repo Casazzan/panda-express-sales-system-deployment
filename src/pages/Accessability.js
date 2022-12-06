@@ -13,14 +13,12 @@ const Accessibility = () => {
     return new Promise( res => setTimeout(res, delay) );
   }
 
-  /*
   window.addEventListener('storage', (e) => {
       // console.log("change to local storage!");
       changeLanguage();
       timeout(1000);
       window.location.reload(false);
   });
-  */
 
 
   useEffect(() => {
