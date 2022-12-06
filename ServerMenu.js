@@ -61,7 +61,7 @@ const ServerMenu = () => {
         <div class = "CheckoutButton" id = "ServerCheckoutScreen" onClick={() => {navigate("/ServerMenu/Checkout")}}><ServerDishChoiceButton Name = "Checkout"/></div>
         <div class = "ServerMenuCurrentOrder">
             <ServerDishChoiceCurrentOrder />
-            <div id = "ServerMenuPrice" onClick={() => {window.location.reload()}}><TotalPrice /></div>
+            <div id = "ServerMenuPrice"><TotalPrice /></div>
         </div>
     </div>
     

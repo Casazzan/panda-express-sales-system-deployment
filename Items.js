@@ -5,16 +5,13 @@ import ServerDishChoiceCurrentOrder from './ServerDishChoiceCurrentOrder';
 import TotalPrice from './TotalPrice';
 import PandaLogo from './panda-logo.png';
 import { useNavigate } from 'react-router-dom';
-import MakeSeasonal from './MakeSeasonal';
 
-const Items = (props) => {
+const Items = () => {
     let navigate = useNavigate();
 
     var test = [[[""]]];
 
     const addToCart = (itemToAdd, index) => {
-
-
       var mylistoforders = JSON.parse(localStorage.getItem('CurrentOrder'));
 
       
@@ -30,9 +27,9 @@ const Items = (props) => {
 
     return (
       <div class = "ItemScreen">
-          <img class = "GoHome" id = "gohomeItems" src={PandaLogo} onClick={() => {navigate("/ServerMenu")}}/>
+          <img class = "GoHome" id = "gohomeItems" src={PandaLogo} onClick={() => {navigate("/View")}}/>
           <div class = "ServerItemOrder"><ServerDishChoiceCurrentOrder />
-            <div id = "ServerItemPrice" onClick={() => {window.location.reload()}}><TotalPrice /></div>
+            <div id = "ServerItemPrice"><TotalPrice /></div>
           </div>
           <div class = "NavButton" id = "ItemAdd" onClick={() => {navigate("/ServerMenu")}}><ItemChoiceButton Name = "Add To Order" /></div>
           <div id = "ItemButtons">
@@ -56,9 +53,6 @@ const Items = (props) => {
             
             <div class = "AppButton" id = "chicken_egg_roll" onClick={() => {addToCart("chicken_egg_roll", 3)}}><ItemChoiceButton Name = "APP ER"/></div>
             <div class = "AppButton" id = "crispy_shrimp" onClick={() => {addToCart("crispy_shrimp", 3)}}><ItemChoiceButton Name = "APP SHRMP"/></div>
-
-            <MakeSeasonal addToCart = {(item, food) => addToCart(item, food)}/>
-
           </div>
       </div>
       )

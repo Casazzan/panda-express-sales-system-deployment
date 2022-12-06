@@ -4,7 +4,11 @@ import CustomerDishChoiceButton from "../CustomerDishChoiceButton";
 import CustomerDishChoiceCurrentOrder from "./CustomerDishChoiceCurrentOrder";
 import '../../index.css';
 
-
+  /**
+   * Landing page for the Customer Kiosk Display
+   * @constructor
+   * @param {Component} props - React props passed in, contains a 3 dimensional array holding current order, a double holding the current price, and a function to update the current order so the display is correct when the user selects an item.
+   */
 const CustomerMenu = (props) => {
 
   return (

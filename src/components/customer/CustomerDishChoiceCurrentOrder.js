@@ -1,44 +1,21 @@
 import '../../index.css';
 import React from "react";
 
-// var mylistoforders = [];
-
-// var order1 = [];
-// var dish1 = ["bowl"];
-// var entrees1 = ["orange_chicken"];
-// var sides1 = ["chow_mein"];
-// var appetizers1 = ["chicken_egg_roll"];
-// order1.push(dish1, entrees1, sides1, appetizers1);
-
-// var order2 = [];
-// var dish2 = ["plate"];
-// var entrees2 = ["mushroom_chicken", "sweetfire_chicken_breast"];
-// var sides2 = ["fried_rice"];
-// var appetizers2 = [""];
-// order2.push(dish2, entrees2, sides2, appetizers2);
-
-// var order3 = [];
-// var dish3 = ["bigger plate"];
-// var entrees3 = ["black_pepper_angus_steak", "bejing_beef", "honey_walnut_shrimp"];
-// var sides3 = ["fried_rice"];
-// var appetizers3 = ["crispy_shrimp", "chicken_egg_roll"];
-// order3.push(dish3, entrees3, sides3, appetizers3);
-
-// mylistoforders.push(order1, order2, order3);
-
 var databaseName = ['honey_seasame_chicken','orange_chicken','black_pepper_angus_steak','string_bean_chicken_breast','sweetfire_chicken_breast','kung_pao_chicken','black_pepper_chicken','grilled_teriyaki_chicken','broccoli_beef','bejing_beef','honey_walnut_shrimp','mushroom_chicken','eggplant_tofu','mixed_vegetables','chow_mein','fried_rice','white_steamed_rice','brown_steamed_rice','chicken_egg_roll','crispy_shrimp'];
 var displayName = ['Honey Seasame Chicken', 'Orange Chicken', 'Black Pepper Angus Steak', 'String Bean Chicken Breast', 'Sweetfire Chicken Breast', 'Kung Pao Chicken', 'Black Pepper Chicken', 'Grilled Teriyaki Chicken', 'Broccoli Beef', 'Bejing Beef', 'Honey Walnut Shrimp','Mushroom Chicken', 'Eggplant Tofu', 'Mixed Vegetables', 'Chow Mein', 'Fried Rice', 'White Steamed Rice', 'Brown Steamed Rice', 'Chicken Egg Roll', 'Crispy Shrimp'];
-  
+  /**
+   * The screen that displays the user's current order.
+   * @constructor
+   * @param {Component} props - React props passed in, contains a 3 dimensional array holding current order, a double holding the current price, and a function to update the current order so the display is correct when the user selects an item.
+   */
   const CustomerDishChoiceCurrentOrder = (props) => {
     console.log(props);
-    
-    // localStorage.setItem('CurrentOrder', JSON.stringify(mylistoforders));
-    //if the orders don't exist
-    // if (mylistoforders2 == null) {
-    //   console.log("mylistoforders2 doesn't exist");
-    //   localStorage.setItem('CurrentOrder', JSON.stringify(test));
-    //   // localStorage.setItem('CurrentOrder', JSON.stringify(mylistoforders));
-    // }
+    /**
+     * Handles when a user deletes an item, if it is the whole entree it deletes the entire item, if not it deletes the singular item.
+     * @param {int} index - Position in the first array of the order.
+     * @param {int} subIndex - Position in the second array of the order.
+     * @param {int} subsubIndex - Position in the third array of the order.
+     */
     const handlechange = (index, subIndex, subsubIndex) => {
       const mynewlistoforders = props.order;
       //If if is a whole order, delete everything inside
@@ -50,7 +27,18 @@ var displayName = ['Honey Seasame Chicken', 'Orange Chicken', 'Black Pepper Angu
       }
       props.updateOrderCallback(mynewlistoforders);
     };
-
+    /**
+     * Displays the name of an item on the current order, if it is a seasonal item it gers the name from the database.
+     * @param {String} orderName - database name of the order.
+     */
+    const displayTheName = (orderName) => {
+      if(databaseName.includes(orderName)){
+        return displayName[databaseName.indexOf(orderName)];
+      }
+      else{
+        return(orderName);
+      }
+    }
     return (
       <div className = "CustomerMenuCurrentOrder">
         {props.order.map((items, index) => {
@@ -76,7 +64,7 @@ var displayName = ['Honey Seasame Chicken', 'Orange Chicken', 'Black Pepper Angu
                       }
                       else {
                         return (
-                          <span onClick={() => {handlechange(index,subIndex,subsubIndex);}}><li class = "listItemInCurrentOrder">{displayName[databaseName.indexOf(subsubItems)]}</li></span>
+                          <span onClick={() => {handlechange(index,subIndex,subsubIndex);}}><li class = "listItemInCurrentOrder">{displayTheName(subsubItems)}</li></span>
                         )
                       }
                       //--------------------------------------------

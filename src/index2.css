@@ -30,6 +30,7 @@ code {
   --EntreeButtonColor: #f5f5f5;
   --SideButtonColor: #076306;
   --AppButtonColor: #6b5835;
+  --SeasonalButtonColor: #b87209;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -48,6 +49,26 @@ body {
 
 /*-------------------Home Page CSS--------------------*/
 
+.GoHome{
+  margin: 1.5%;
+  margin-top: 1.5%;
+  position: fixed;
+
+  max-width: 5%;
+  max-height: 10%;
+  z-index: 4;
+}
+.GoHome:hover{
+  cursor: pointer;
+}
+#gohomeItems{
+  margin: 2%;
+  margin-left: 2.5%;
+}
+#gohomeCheckout{
+  left: 24%;
+}
+
 .homeLogo{
   content: url('panda-logo.png');
   max-width: 25%;
@@ -61,6 +82,11 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+}
+#customer{
+  font-size: max(1.3vw,25px);
+  font-weight: bold;
+  block-size: max(1.3vw,100px);
 }
 
 .HomePageButton{
@@ -188,6 +214,29 @@ body {
   border: 2px solid var(--ServerDishChoiceButtonEdgeColor);
   max-height: 100%;
 }
+#ServerMenuPrice{
+  padding: 0%;
+  margin: 2%;
+  margin-left: none;
+  text-decoration: none;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: max(1.2vw,15px);
+  border-radius: 12px;
+  border: 2px solid var(--ServerDishChoiceButtonEdgeColor);
+  background-color: var(--ServerCurrentOrderBackgroundColor);
+  position: fixed;
+  bottom: 15%;
+  left: 1%;
+}
+#ServerMenuPriceSpan{
+  font-size: max(2vw,20px);
+}
+#ServerMenuPrice:hover{
+  cursor: pointer;
+}
 
 
 /* Checkout Screen */
@@ -257,6 +306,15 @@ body {
   bottom: 2%;
   right: 0%;
 }
+#ServerCheckoutText{
+  padding: 2%;
+  text-decoration: none;
+  text-align: center;
+  font-size: max(2vw,25px);
+  color: var(--ServerDishChoiceButtonTextColor);
+  border-radius: 12px;
+  transition-duration: 0.4s;
+}
 #ServerGoBack{
   bottom: 2%;
   left: 0%;
@@ -282,40 +340,9 @@ body {
 #ServerPriceSpan{
   font-size: max(2vw,20px);
 }
-#ServerCheckoutText{
-  padding: 2%;
-  text-decoration: none;
-  text-align: center;
-  font-size: max(2vw,25px);
-  color: var(--ServerDishChoiceButtonTextColor);
-  border-radius: 12px;
-  transition-duration: 0.4s;
+#ServerPrice:hover{
+  cursor: pointer;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -410,6 +437,24 @@ body {
   color: var(--ServerDishChoiceButtonTextHoverColor);
   cursor: default;
 }
+.SeasonalButton{
+  background-color: var(--SeasonalButtonColor);
+  border: none;
+  color: var(--ServerDishChoiceButtonTextColor);
+  text-decoration: none;
+  text-align: center;
+  border-radius: 12px;
+  transition-duration: 0.4s;
+  border: 2px solid var(--ServerDishChoiceButtonEdgeColor);
+  padding: 0%;
+  margin: 2%;
+  min-width: 10%;
+}
+.SeasonalButton:hover{
+  background-color: var(--ServerDishChoiceButtonBackgroundHoverColor);
+  color: var(--ServerDishChoiceButtonTextHoverColor);
+  cursor: default;
+}
 
 /*Item Screen*/
 .ItemScreen{
@@ -424,8 +469,51 @@ body {
   justify-content: space-evenly;
   align-items: center;
   height: auto;
+  width: 60%;
+  margin-top: 2%;
+  margin-left: 35%;
 }
 
+.ServerItemOrder{
+  position: fixed;
+  background-color: var(--ServerCurrentOrderBackgroundColor);
+  margin-top: 1.5%;
+  margin-left: 2%;
+  border: none;
+  color: var(--ServerDishChoiceButtonTextColor);
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  text-align: center;
+  font-size: 15px;
+  border-radius: 12px;
+  border: 2px solid var(--ServerDishChoiceButtonEdgeColor);
+  height: 95%;
+  width: 30%;
+}
 
-
+#ServerItemPrice{
+  padding: 0%;
+  margin: 2%;
+  margin-left: none;
+  text-decoration: none;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: max(1.2vw,15px);
+  border-radius: 12px;
+  border: 2px solid var(--ServerDishChoiceButtonEdgeColor);
+  background-color: var(--ServerCurrentOrderBackgroundColor);
+  position: fixed;
+  bottom: 0%;
+  left: 2%;
+}
+#ServerItemPriceSpan{
+  font-size: max(2vw,20px);
+}
+#ServerItemPrice:hover{
+  cursor: pointer;
+}
 /*---------------------------------------------------------------*/

@@ -14,6 +14,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.2.0",
     "concurrently": "^7.6.0",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
@@ -21,13 +22,12 @@
     "framer-motion": "^7.6.18",
     "google-map-react": "^2.2.0",
     "google-maps-react": "^2.0.6",
+    "gapi-script": "^1.2.0",
     "material-icons": "^1.12.1",
     "pg": "^8.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-google-maps": "^9.4.5",
-    "react-icons": "^4.7.1",
-    "react-native-web": "^0.18.10",
+    "react-google-login": "^5.2.2",
     "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
     "react-text": "^3.2.5",
@@ -41,7 +41,8 @@
     "eject": "react-scripts eject",
     "node": "node server",
     "react": "react-scripts start",
-    "dev": "concurrently \"npm run node\" \"npm run react\""
+    "dev": "concurrently \"npm run node\" \"npm run react\"",
+    "jsdoc": "jsdoc ./src/components/customer ./src/components ./server"
   },
   "eslintConfig": {
     "extends": [
@@ -71,6 +72,7 @@
     "os-browserify": "^0.3.0",
     "process": "^0.11.10",
     "react-app-rewired": "^2.2.1",
+    "react-doc-generator": "^1.2.8",
     "stream-browserify": "^3.0.0",
     "stream-http": "^3.2.0",
     "url": "^0.11.0"

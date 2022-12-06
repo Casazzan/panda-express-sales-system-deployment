@@ -9,9 +9,10 @@ function EmployeeTabs() {
   /* these are useState hooks */
   const [toggleState, setToggleState] = useState(1);
   const [type, setType] = useState('0');
-  const [changeType, setChangeType] = useState('f');
+  const [changeType, setChangeType] = useState('0');
   const [RosterSummary, setRosterSummary] = useState('');
   const [userInput, setUserInput] = useState(''); 
+  const [email, setEmail] = useState(''); 
 
   const toggleTab = (index) => {
     setToggleState(index);
@@ -20,13 +21,16 @@ function EmployeeTabs() {
   const deleteEmployee = async() => {
     var selected = document.getElementById("selectedEmployeeDiv").innerHTML;
     console.log(selected);
-    const promise = fetch(`http://localhost:5000/roster/delete?${selected}`); 
+    console.log("delete employee: ", selected);
+    const promise = fetch(`http://localhost:5000/roster/delete?id=${selected}`); 
     const response = await promise;
   }
 
-  const updateEmployee = () => {
+  const updateEmployee = async() => {
     var selected = document.getElementById("selectedEmployeeDiv").innerHTML;
-    console.log("update employee: ", selected, changeType);
+    console.log("update employee: ", selected, changeType, email);
+    const promise = fetch(`http://localhost:5000/roster/update_type?id=${selected}&manager=${changeType}`); 
+    const response = await promise;
   }
 
   useEffect(() => {
@@ -48,8 +52,12 @@ function EmployeeTabs() {
     setUserInput(event.target.value);
     console.log(userInput);
   }
+  const emailHandler = (event) => {
+    setEmail(event.target.value);
+    console.log(email);
+  }
 
-  const addEmployeeTest = async() => {
+  const addEmployee = async() => {
     const firstPromise = fetch(`http://localhost:5000/roster/nextID`); 
     const firstResponse = await firstPromise;
     const result = await firstResponse.json();
@@ -64,6 +72,14 @@ function EmployeeTabs() {
     setUserInput("");
     setType(0);
     console.log("Added: " + userInput + newID + type);
+  }
+
+  const addEmail = async() => {
+    console.log("inserting "+ email);
+    // const promise = fetch(`http://localhost:5000/roster/add?id=${result.nextID}&name=${userInput}&manager=${type}`); 
+    // const response = await promise;
+    setEmail("");
+    // console.log("Added: " + userInput + newID + type);
   }
 
   return (
@@ -117,7 +133,7 @@ function EmployeeTabs() {
                 <option value="0">Regular Employee</option>
               </select> 
               <p></p>
-              <button className="SubmitButton" onClick={() => addEmployeeTest()}> Submit</button>
+              <button className="SubmitButton" id="delete" onClick={() => addEmployee()}>Update</button>
               <p>
               </p>
         </div>
@@ -137,9 +153,15 @@ function EmployeeTabs() {
                 value={changeType}
                 onChange={(e) => setChangeType(e.target.value)}
               >
-                <option value="Manager">Manager</option>
-                <option value="Regular Employee">Regular Employee</option>
+                <option value="1">Manager</option>
+                <option value="0">Regular Employee</option>
               </select>
+              <p></p>
+              <label> Enter Email Address: </label>
+              <input type="text" email="email" 
+                    onChange={emailHandler} 
+                    value = {email}/>
+              <p></p>
               <p></p>
 
               <button 

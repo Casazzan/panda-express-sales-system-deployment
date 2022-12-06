@@ -6,7 +6,11 @@ import { useNavigate } from 'react-router-dom';
 import CustomerTotalPrice from './CustomerTotalPrice';
 import CustomerCheckoutButton from './CustomerCheckoutButton';
 
-
+ /**
+ * Customer side checkout screen component
+ * @function
+ * @param {Component} props - Holds the current order, the current price, and the screen the user is currently on. Also has localSorage code for persistance when the screen is reloaded.
+ */
 const CustomerCheckout = (props) => {
   
   return (

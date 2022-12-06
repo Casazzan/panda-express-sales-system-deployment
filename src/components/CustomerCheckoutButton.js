@@ -2,6 +2,13 @@ import { send } from 'process';
 import React, { Component } from 'react'
 import "../index.css"
 
+/**
+ * Queries the database for the price of a dish, taking into account the dish and everything in it
+ * @function
+ * @param {int} dishId - the ID of the entrees dish (bowl, plate, or bigger plate).
+ * @param {string} idString - string of ID's of the items inside the dish.
+ * @returns {double} The price of the dish passed in.
+ */
 var callAPIAsyncGetPrice = async (dishId, idString) => {
     //console.log((await (await fetch(`http://localhost:5000/dish_list/price?dish_id=${dishId}${idString}`)).json()));
     const promise = fetch(`http://localhost:5000/dish_list/price?dish_id=${dishId}${idString}`);
@@ -10,6 +17,12 @@ var callAPIAsyncGetPrice = async (dishId, idString) => {
     return result.price;
 }
 
+/**
+ * Calculates the price of all the dishes in the current order
+ * @function
+ * @param {int} MyListOfOrders - 3 Dimensional array containing the user's current order
+ * @return {double} Price of all the dishes in the current order to 2 decimal places
+ */
 const returnPrice = async (MyListOfOrdersArray, dishName) => {
     var totalPrice = 0;
     var resultString = "";
@@ -57,6 +70,11 @@ const returnPrice = async (MyListOfOrdersArray, dishName) => {
     return totalPrice.toFixed(2);
 }
 
+/**
+ * All of the logic for sending the user's current order to the database
+ * @function
+ * @param {int} MyListOfOrders - 3 Dimensional array containing the user's current order 
+ */
 const orderTheItems = async (MyListOfOrders) => {
     for (var i = 0; i < MyListOfOrders.length; i++){
         var entrees = [];
@@ -144,11 +162,21 @@ const orderTheItems = async (MyListOfOrders) => {
     }
 }
 
+/**
+ * Sends the order to the database and erases the entire order in localStorage
+ * @param {Component} props2 - prop containing the user's current order
+ * @function
+ */
 const sendsOrderAndDeletesCurrentOrder = (props2) => {
     orderTheItems(props2.order);
     props2.updateOrderCallbackTwo([[[]]]);
 }
 
+/**
+ * All the logic for the checkout button on the checkout screen
+ * @function
+ * @param {Component} props - Holds the current order, the current price, and the screen the user is currently on. Also has localStorage code for persistance when the screen is reloaded.
+ */
 const CustomerCheckoutButton = (props) => {
     return (
         <div id = "CheckoutText" onClick = {() => {sendsOrderAndDeletesCurrentOrder(props)}}>Checkout</div>

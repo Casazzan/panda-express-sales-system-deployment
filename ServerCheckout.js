@@ -13,11 +13,11 @@ const ServerCheckout = () => {
   let navigate = useNavigate();
   return (
     <div class = "CheckoutScreen">
-        <img class = "GoHome" id = "gohomeCheckout" src={PandaLogo} onClick={() => {navigate("/ServerMenu")}}/>
+        <img class = "GoHome" id = "gohomeCheckout" src={PandaLogo} onClick={() => {navigate("/View")}}/>
         <div class = "ServerCheckoutOrder"><ServerDishChoiceCurrentOrder /></div>
         <div id = "ServerCheckout"><ServerCheckoutButton /></div>
         <div class = "ServerCheckoutButton" id = "ServerGoBack" onClick={() => {navigate("/ServerMenu")}}><ServerDishChoiceButton Name = "Go Back" /></div>
-        <div id = "ServerPrice" onClick={() => {window.location.reload()}}><TotalPrice /></div>
+        <div id = "ServerPrice"><TotalPrice /></div>
     </div>
     )
 }
