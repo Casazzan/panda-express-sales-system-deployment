@@ -1,15 +1,17 @@
 import React from 'react';
+import "./CustMainPage.css";
+import PandaMap from "./PandaMap";
+
 
 import Logo from '../../customer/pandaLogo.png';
-import Text from 'react-text';
 import { useNavigate } from 'react-router-dom';
 import "../../customer/container.css";
+import { ChakraProvider, theme } from '@chakra-ui/react'
 
 
 const StoreFinder = (props) => {
 
     let navigate = useNavigate();
-      
 
   return (
 
@@ -25,11 +27,13 @@ const StoreFinder = (props) => {
 
         </div>
 
-        <div className="container">
+        <ChakraProvider className="PandaMap">
 
-            <Text> Coming Soon! </Text>
+            <PandaMap />
 
-        </div>
+        </ChakraProvider>
+
+
 
     </div>
   )
@@ -37,3 +41,4 @@ const StoreFinder = (props) => {
 }
 
 export default StoreFinder
+

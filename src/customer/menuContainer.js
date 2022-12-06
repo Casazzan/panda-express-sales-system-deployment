@@ -23,8 +23,12 @@ import brownRice from './brownRice.png';
 import ceRoll from './ceRoll.png';
 import cShrimp from './cShrimp.png';
 
+import seasonal from './comingSoon.png';
+
 
 function menuContainer(props) {
+
+
   return (
     <>
       <div className="menuContainer">
@@ -41,8 +45,13 @@ function menuContainer(props) {
                 <ItemBox addToCart={(itemToAdd, index) => props.addToCart(itemToAdd, index)} itemImg = {hwShrimp} className = "img" itemName = {"honey_walnut_shrimp"} itemTitle = {"Honey Walnut Shrimp"} itemType = {"1"} />
                 <ItemBox addToCart={(itemToAdd, index) => props.addToCart(itemToAdd, index)} itemImg = {mChicken} className = "img" itemName = {"mushroom_chicken"} itemTitle = {"Mushroom Chicken"} itemType = {"1"} />
                 <ItemBox addToCart={(itemToAdd, index) => props.addToCart(itemToAdd, index)} itemImg = {epTofu} className = "img" itemName = {"eggplant_tofu"} itemTitle = {"Eggplant Tofu"} itemType = {"1"} />   
+           
+                <ItemBox addToCart={(itemToAdd, index) => props.addToCart(itemToAdd, index)} itemImg = {seasonal} className = "img" itemName = {"seasonal_entree"} itemTitle = {"seasonal"} itemType = {"1"} />
+           
             </main>
         </div>
+
+
       </div>
     </>
   );

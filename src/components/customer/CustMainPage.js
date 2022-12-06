@@ -11,6 +11,7 @@ import CustomerViewBtn from "../CustomerViewBtn";
 
 import Logo from './pandaLogo.png';
 import Text from 'react-text';
+import FoodBackground from './pandaFood.jpeg';
 
 /**
  * Main page for the screen the Public can access
@@ -40,12 +41,14 @@ const CustMainPage = (props) => {
 
         </div>
 
-
-
       </div>
 
-      <Text> Welcome to Panda Express! Info Coming Soon! </Text>
+      <div className = "background">
 
+         <img className = "backgroundImg" src={FoodBackground} />
+         <box className = "welcomeBox" title = "Welcome!" />
+
+      </div>
 
     </div>
   )
