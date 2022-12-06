@@ -46,7 +46,11 @@ const CustMainPage = (props) => {
       <div className = "background">
 
          <img className = "backgroundImg" src={FoodBackground} />
-         <box className = "welcomeBox" title = "Welcome!" />
+         <h1 className = "backgroundText">Welcome to Panda Express! </h1> <br/> <br/> 
+         <p className = "backgroundText2">
+         We are a fast food restaurant chain that serves American Chinese cuisine. You can view our menu here on our site. Then, 
+         once you're ready to head to a store to place an order, click on "Find Restaraunt" to get directions to one of our 2,000 locations.
+         Hope to see you soon!</p>
 
       </div>
 

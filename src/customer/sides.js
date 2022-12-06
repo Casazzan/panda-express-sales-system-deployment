@@ -9,6 +9,8 @@ import friedRice from './friedRice.png';
 import whiteRice from './whiteRice.png';
 import brownRice from './brownRice.png';
 
+import AddSeasonal from "./AddSeasonal";
+
 
 function sides(props) {
     return (
@@ -21,6 +23,8 @@ function sides(props) {
                         <ItemBox addToCart={(itemToAdd, index) => props.addToCart(itemToAdd, index)} itemImg = {friedRice} itemName = {"fried_rice"} itemTitle = {"Fried Rice"} itemType = {"2"} />
                         <ItemBox addToCart={(itemToAdd, index) => props.addToCart(itemToAdd, index)} itemImg = {whiteRice} itemName = {"white_steamed_rice"} itemTitle = {"White Steamed Rice"} itemType = {"2"} />
                         <ItemBox addToCart={(itemToAdd, index) => props.addToCart(itemToAdd, index)} itemImg = {brownRice} itemName = {"brown_steamed_rice"} itemTitle = {"Brown Steamed Rice"} itemType = {"2"} />
+                   
+                        <AddSeasonal addToCart = {(itemToAdd, index) => props.addToCart(itemToAdd, index)}/>
                     </main>
                 </div>
             </div>

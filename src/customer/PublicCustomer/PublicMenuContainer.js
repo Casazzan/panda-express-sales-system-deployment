@@ -13,6 +13,7 @@ import beijBeef from '../beijBeef.png';
 import hwShrimp from '../hwShrimp.png';
 import mChicken from '../mChicken.png';
 import epTofu from '../epTofu.png';
+import AddSeasonal from "./PublicAddSeasonal";
 
 function PublicMenuContainer(props) {
   return (
@@ -20,6 +21,7 @@ function PublicMenuContainer(props) {
       <div className="menuContainer">
         <div className="menuItems">
               <main>
+
                 <PublicItemBox itemImg = {hsChicken} className = "img" itemTitle = {"Honey Seasame Chicken"} />
                 <PublicItemBox itemImg = {oChicken} className = "img" itemTitle = {"Orange Chicken"} />
                 <PublicItemBox itemImg = {bpaSteak} className = "img" itemTitle = {"Black Pepper Angus Steak"} />
@@ -31,6 +33,9 @@ function PublicMenuContainer(props) {
                 <PublicItemBox itemImg = {hwShrimp} className = "img" itemTitle = {"Honey Walnut Shrimp"} />
                 <PublicItemBox itemImg = {mChicken} className = "img" itemTitle = {"Mushroom Chicken"} />
                 <PublicItemBox itemImg = {epTofu} className = "img" itemTitle = {"Eggplant Tofu"} />   
+
+                <AddSeasonal />
+
             </main>
         </div>
       </div>

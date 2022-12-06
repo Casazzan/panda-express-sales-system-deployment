@@ -30,8 +30,11 @@ class PublicMenu extends React.Component {
       content = <Appetizers />
     return (
       <div className="container">
+
+        <div id="google_translate_element"></div>
         <PublicHeader callback={(view) => this.setView(view)} goBack={() => this.props.goBack()}/>
         {content}
+        
       </div>
     );
   }

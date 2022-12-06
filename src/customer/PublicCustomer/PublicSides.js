@@ -9,6 +9,7 @@ import friedRice from '../friedRice.png';
 import whiteRice from '../whiteRice.png';
 import brownRice from '../brownRice.png';
 
+import AddSeasonal from "./PublicAddSeasonal";
 
 function PublicSides(props) {
     return (
@@ -22,6 +23,8 @@ function PublicSides(props) {
                         <PublicItemBox itemImg = {friedRice} className = "img" itemTitle = {"Fried Rice"} />
                         <PublicItemBox itemImg = {whiteRice} className = "img" itemTitle = {"White Steamed Rice"} />
                         <PublicItemBox itemImg = {brownRice} className = "img" itemTitle = {"Brown Steamed Rice"} />
+
+                        <AddSeasonal />
 
                     </main>
                 </div>
