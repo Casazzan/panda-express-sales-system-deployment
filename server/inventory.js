@@ -14,6 +14,69 @@ const pool = new Pool({
     ssl: {rejectUnauthorized: false}
 });
 
+/**
+ * - Single Inventory Item Query <br>
+ * Route: /inventory?id={id} <br>
+ * Ex: http://localhost:5000/inventory?id=3 <br>
+ * Ex Response: {"item_id":3,"item_name":"black_pepper_angus_steak","servings":"12.00","restock_quantity":300,"item_price":"4.02","food_type":"entree","minimum_amount":50} <br>
+ *  <br>
+ * Route: /inventory?name={name} <br>
+ * Ex: http://localhost:5000/inventory?name=black_pepper_angus_steak <br>
+ * Ex Response: {"item_id":3,"item_name":"black_pepper_angus_steak","servings":"12.00","restock_quantity":300,"item_price":"4.02","food_type":"entree","minimum_amount":50} <br>
+ *  <br>
+ * - Add Item to Inventory <br>
+ * Route: <br>
+ * /inventory/add?id={item_id}&name={item_name}&servings={servings}&restock_quantity={restock_quantity}&price={item_price}&food_type={food_type}&minimum_amount={minimum_amount} <br>
+ * Ex: http://localhost:5000/inventory/add?id21=&name=testname&servings=10&restock_quantity=30&price=3.21&food_type=entree&minimum_amount=50 <br>
+ * Ex Response: No response <br>
+ *  <br>
+ * - Remove Item From Inventory <br>
+ * Route: /innentory/delete?id={item_id} <br>
+ * Ex: http://localhost:5000/inventory/delete?id=22 <br>
+ * Ex Response: No response <br>
+ *  <br>
+ * - Subtract Servings From Item <br>
+ * Route: /inventory/subtract?id={id}&servings={number of servings} <br>
+ * Ex: http://localhost:5000/inventory/subtract?id=3&servings=1 <br>
+ * Ex Response: No response <br>
+ *  <br>
+ * - Update Servings For Item <br>
+ * Route: /inventory/update_servings?id={id}&servings={number of servings} <br>
+ * Ex: http://localhost:5000/inventory/update_servings?id=3&servings=12 <br>
+ * Ex Response: No response <br>
+ *  <br>
+ * - Update Price For Item <br>
+ * Route: /inventory/update_price?id={id}&price={new price} <br>
+ * Ex: http://localhost:5000/inventory/update_price?id=3&price=4.01 <br>
+ * Ex Response: No response <br>
+ *  <br>
+ * - Get Full Inventory <br>
+ * Route: /inventory/summary <br>
+ * Ex: http://localhost:5000/inventory/summary <br>
+ * Ex Response: \[{"item_id":5,"item_name":"sweetfire_chicken_breast","servings":"130.00","restock_quantity":300,"item_price":"3.21","food_type":"entree","minimum_amount":50},...\] <br>
+ *  <br>
+ * - Get Next Available Inventory ID <br>
+ * Route: /inventory/nextID <br>
+ * Ex: http://localhost:5000/inventory/nextID <br>
+ * Ex Response: {"nextID":22} <br>
+ *  <br>
+ * - Restock Full Inventory <br>
+ * Route: /inventory/restock <br>
+ * Ex: http://localhost:5000/inventory/restock <br>
+ * Ex Response: No response <br>
+ *  <br>
+ * - Restock Critical Inventory <br>
+ * Route: /inventory/critical_restock <br>
+ * Ex: http://localhost:5000/inventory/critical_restock <br>
+ * Ex Response: No response <br>
+ *  <br>
+ * - Get Seasonal Items <br>
+ * Route: /inventory/seasonal_items <br>
+ * Ex: http://localhost:5000/inventory/seasonal_items <br>
+ * Ex Response: [{"item_id":21,"item_name":"seasonal_chicken_5","servings":"300.00","restock_quantity":300,"item_price":"10.00","food_type":"entree","minimum_amount":30}]
+ * @module
+ */
+
 router.get('/', (req, res) => {
     let id = req.query.id;
     let name = req.query.name;
