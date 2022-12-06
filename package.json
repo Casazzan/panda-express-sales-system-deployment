@@ -39,7 +39,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "node": "node server",
+    "node": "node --max-old-space-size=4096 server",
     "react": "react-scripts start",
     "dev": "concurrently \"npm run node\" \"npm run react\"",
     "jsdoc": "jsdoc ./src/components/customer ./src/components ./server"
