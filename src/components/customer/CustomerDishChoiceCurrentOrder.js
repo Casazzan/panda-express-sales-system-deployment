@@ -1,5 +1,7 @@
 import '../../index.css';
 import React from "react";
+import {useState, useEffect} from 'react'
+import axios from 'axios'
 
 var databaseName = ['honey_seasame_chicken','orange_chicken','black_pepper_angus_steak','string_bean_chicken_breast','sweetfire_chicken_breast','kung_pao_chicken','black_pepper_chicken','grilled_teriyaki_chicken','broccoli_beef','bejing_beef','honey_walnut_shrimp','mushroom_chicken','eggplant_tofu','mixed_vegetables','chow_mein','fried_rice','white_steamed_rice','brown_steamed_rice','chicken_egg_roll','crispy_shrimp'];
 var displayName = ['Honey Seasame Chicken', 'Orange Chicken', 'Black Pepper Angus Steak', 'String Bean Chicken Breast', 'Sweetfire Chicken Breast', 'Kung Pao Chicken', 'Black Pepper Chicken', 'Grilled Teriyaki Chicken', 'Broccoli Beef', 'Bejing Beef', 'Honey Walnut Shrimp','Mushroom Chicken', 'Eggplant Tofu', 'Mixed Vegetables', 'Chow Mein', 'Fried Rice', 'White Steamed Rice', 'Brown Steamed Rice', 'Chicken Egg Roll', 'Crispy Shrimp'];
@@ -31,12 +33,45 @@ var displayName = ['Honey Seasame Chicken', 'Orange Chicken', 'Black Pepper Angu
      * Displays the name of an item on the current order, if it is a seasonal item it gers the name from the database.
      * @param {String} orderName - database name of the order.
      */
+     const [translatedName, setTranslatedName] = useState('Default');
+     const changeLanguage = (input) => {
+       // var selected = document.getElementById("selectedLanguageDiv").innerHTML;
+       if (JSON.parse(localStorage.getItem("language")) != "en") {
+         const encodedParams = new URLSearchParams();
+         encodedParams.append("q", input);
+         encodedParams.append("target", JSON.parse(localStorage.getItem("language")));
+         encodedParams.append("source", "en");
+     
+         const options = {
+           method: 'POST',
+           url: 'https://google-translate1.p.rapidapi.com/language/translate/v2',
+           headers: {
+             'content-type': 'application/x-www-form-urlencoded',
+             'Accept-Encoding': 'application/gzip',
+             'X-RapidAPI-Key': '8fbc873fd8msh5d43e6022f22f64p15f17ejsnbb456384ba17',
+             'X-RapidAPI-Host': 'google-translate1.p.rapidapi.com'
+           },
+           data: encodedParams
+         };
+     
+         axios.request(options).then(function (response) {
+             setTranslatedName(response.data.data.translations[0].translatedText);
+         }).catch(function (error) {
+             console.error(error);
+         });
+       }
+       else {
+         setTranslatedName(input)
+       }
+     }
     const displayTheName = (orderName) => {
       if(databaseName.includes(orderName)){
-        return displayName[databaseName.indexOf(orderName)];
+        changeLanguage(displayName[databaseName.indexOf(orderName)])
+        return translatedName
       }
       else{
-        return(orderName);
+        changeLanguage(orderName);
+        return(translatedName);
       }
     }
     return (
@@ -48,8 +83,6 @@ var displayName = ['Honey Seasame Chicken', 'Orange Chicken', 'Black Pepper Angu
                 return(
                   <div>
                     {subItems.map((subsubItems, subsubIndex) => {
-
-                      //------------------------------------------
                       if (subItems == "bowl") {
                         return ( <span onClick={() => {handlechange(index,subIndex,subsubIndex);}}><h3>Bowl</h3></span> )
                       } 
