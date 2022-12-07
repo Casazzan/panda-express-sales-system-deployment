@@ -6,8 +6,9 @@ import Sides from "./sides";
 import Appetizers from "./apps";
 import "./container.css";
 
-class Container extends React.Component {
 
+class Container extends React.Component {
+  
   constructor(props) {
     super(props);
     this.state = {view: "all"}
