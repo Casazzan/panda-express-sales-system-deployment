@@ -88,7 +88,6 @@ body {
   font-weight: bold;
   block-size: max(1.3vw,100px);
 }
-
 .HomePageButton{
   align-self: center;
   background-color: var(--ServerDishChoiceButtonTextHoverColor);

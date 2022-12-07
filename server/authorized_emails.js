@@ -13,7 +13,18 @@ const pool = new Pool({
     port: process.env.PSQL_PORT,
     ssl: {rejectUnauthorized: false}
 });
-
+/**
+ * - Get Full List Of Emails <br>
+ * Route: /authorized_emails/summary <br>
+ * Ex: http://localhost:5000/authorized_emails/summary <br>
+ * Ex Response: [{"email":"alex.m.deyoung@tamu.edu"},{"email":"casazzan@tamu.edu"},...] <br>
+ *  <br>
+ * - Add email <br>
+ * Route:  /authorized_emails/add?email={email} <br>
+ * Ex: http://localhost:5000/authorized_emails/add?email={email} <br>
+ * Ex Response: No Response
+ * @module
+ */
 router.get('/add', (req, res) => {
     let email = req.query.email;
     const query = `INSERT INTO authorized_emails(email) VALUES ('${email}')`;

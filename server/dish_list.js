@@ -14,6 +14,29 @@ const pool = new Pool({
     ssl: {rejectUnauthorized: false}
 });
 
+/**
+ * - Single Dish Query <br>
+ * Route: /dish_list?id={id} <br>
+ * Ex: http://localhost:5000/dish_list?id=3 <br>
+ * Ex Response: {"dish_id":3,"dish_name":"bigger_plate","number_entrees":3,"number_sides":1,"price":"9.65"} <br>
+ *  <br>
+ * - Get Full Dish List <br>
+ * Route: /dish_list/summary <br>
+ * Ex: http://localhost:5000/dish_list/summary <br>
+ * Ex Response: \[{"dish_id":3,"dish_name":"bigger_plate","number_entrees":3,"number_sides":1,"price":"9.65"},...\] <br>
+ *  <br>
+ * - Order Price Query By Name <br>
+ * Route: /dish_list/price?dish_id={id}&item={item_name}&item={item_name}... <br>
+ * Ex: http://localhost:5000/dish_list/price?dish_id=1&item=honey_seasame_chicken&item=black_pepper_angus_steak&item=fried_rice <br>
+ * Ex Response: {"price":16.79} <br>
+ *  <br>
+ * - Order Price Query By ID <br>
+ * Route: /dish_list/price_by_id?dish_id={id}&item={item_id}&item={item_id}... <br>
+ * Ex: http://localhost:5000/dish_list/price_by_id?dish_id=1&item=2&item=5&item=10 <br>
+ * Ex Response: {"price":16.79}
+ * @module
+ */
+
 router.get('/', (req, res) => {
     let id = req.query.id;
     const query = `SELECT * FROM dish_list where dish_id = ${id}`;
@@ -97,7 +120,7 @@ router.get('/price', async (req, res) => {
 
     for(let i = 0; i < itemList.length; i++) {
         let item = itemList[i];
-        if (item.food_type === 'undefined') entrees.push(item);
+        if(item.food_type === 'undefined') entrees.push(item);
         else if(item.food_type === 'entree') entrees.push(item);
         else if(item.food_type === 'side') sides.push(item);
         else appetizers.push(item);

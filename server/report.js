@@ -14,6 +14,27 @@ const pool = new Pool({
     ssl: {rejectUnauthorized: false}
 });
 
+/**
+ * - Sales Report <br>
+ * Route: http://localhost:5000/report/sales <br>
+ *  <br>
+ * - Excess Report <br>
+ * Route: http://localhost:5000/report/excess?startDate={Date}&endDate={Date} <br>
+ *  <br>
+ * - Restock Report <br>
+ * Route: http://localhost:5000/report/restock <br>
+ *  <br>
+ * - Sells Together <br>
+ * Route: http://localhost:5000/report/sells_together?startDate={Date}&endDate={Date}
+ * @module
+ */
+
+/**
+ * Find the number of servings used for each item in the given date range
+ * @param {string} startDate The start of the date range
+ * @param {string} endDate The end of the date range
+ * @returns {Map<string, double>} item : servings pairs
+ */
 async function getServingsUsed(startDate, endDate) {
     const servingsMap = new Map();
     const query = `SELECT entree_dish,entree_amt_servings,side_ingredients,side_amt_servings,appetizer_ingredients,appetizer_amt_servings FROM order_history WHERE date >= '${startDate}' AND date   <= '${endDate}'`;
@@ -27,7 +48,12 @@ async function getServingsUsed(startDate, endDate) {
         }
         return servingsMap;
 }
-
+/**
+ * Parses the parallel item and servings lists and adds them to the map
+ * @param {string} itemList comma separated list of items
+ * @param {string} servingList comma separated list of servings, parallel to itemList
+ * @param {Map<string, double>} map item : servings pairs
+ */
 function parseParallelStrings(itemList, servingList, map) {
     itemArr = itemList.split(",");
     servingArr = servingList.toString().split(",").map(Number);
@@ -39,6 +65,10 @@ function parseParallelStrings(itemList, servingList, map) {
     }
 }
 
+/**
+ * Queries database for all inventory item names and restock quantities
+ * @returns array of items
+ */
 async function getInventoryRestock() {
     const query = `SELECT item_name, restock_quantity FROM inventory`;
     console.log(`Performing query: ${query}`);
@@ -88,7 +118,7 @@ router.get('/restock', (req, res) => {
 
 
 router.get('/sales', (req, res) => {
-    const query = `SELECT type_of_dish, count(*), SUM(price) FROM order_history GROUP BY type_of_dish ORDER BY count(*) DESC LIMIT 10`;
+    const query = `SELECT type_of_dish, count(*), SUM(price) FROM order_history GROUP BY type_of_dish ORDER BY count(*) DESC LIMIT 3`;
     console.log(`Performing query: ${query}`);
     pool
         .query(query)
@@ -97,6 +127,12 @@ router.get('/sales', (req, res) => {
         });
 });
 
+/**
+ * Find the pairs of items that sell together most frequently in the given date rangs
+ * @param {string} startDate The start of the date range
+ * @param {string} endDate The end of the date range
+ * @returns {Map<string, int>} item : sales count pairs
+ */
 async function whatSellsTogether(startDate, endDate) {
     const salesMap = new Map();
     const query = `SELECT entree_dish, side_ingredients FROM order_history WHERE date >= '${startDate}' AND date   <= '${endDate}'`;

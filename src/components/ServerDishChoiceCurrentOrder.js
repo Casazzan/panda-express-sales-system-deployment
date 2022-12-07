@@ -86,7 +86,7 @@ var displayName = ['Honey Seasame Chicken', 'Orange Chicken', 'Black Pepper Angu
                       } 
                       else {
                         return (
-                          <span onClick={() => {handlechange(index,subIndex,subsubIndex);}}><li>{displayName[databaseName.indexOf(subsubItems)]}</li></span>
+                          <span onClick={() => {handlechange(index,subIndex,subsubIndex);}}><li>{databaseName.indexOf(subsubItems) == -1 ? subsubItems : displayName[databaseName.indexOf(subsubItems)]}</li></span>
                         )
                       }
                       //--------------------------------------------

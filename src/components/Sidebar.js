@@ -4,10 +4,11 @@ import Logo from '../panda-logo.png'
 import "../App.css";
 
 function Sidebar() {
+
   return (
     <div className="Sidebar"> 
       <ui className="SidebarList">
-        <li className="logo"> <a href="https://https://casazzan-panda-express-render.onrender.com/"><img src={Logo}/></a> </li>
+        <li className="logo"> <a href="/view"><img src={Logo}/></a> </li>
         {SidebarData.map((val, key) => {
           return (
             <li 

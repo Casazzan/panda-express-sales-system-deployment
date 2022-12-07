@@ -8,12 +8,10 @@ import Entree from "../customer/entreeOption";
 import Side from "../customer/sideOption";
 import Apps from "../customer/appOption";
 
-// var callAPIAsync = async () => {
-//   return (await fetch("http://localhost:5000/roster?id=2")).text();
-// }
+/**
+ * A Test for using Routeing in the customer page, no longer in use
+ */
 const CustomerLandingPage = () => {
-  // var hello = callAPIAsync();
-  // console.log("BRUH" + hello);
   return (
     <Router>
         <Routes>
