@@ -34,7 +34,7 @@ const LoginPage = () => {
         var profile = auth2.currentUser.get().getBasicProfile();
         console.log("NAME-->"+profile.getName());
         console.log("Email-->"+profile.getEmail());
-        // var authorizedEmails = fetch("http://localhost:5000/authorized_emails/summary");
+        // var authorizedEmails = fetch("http://localhost:5001/authorized_emails/summary");
         auth2.disconnect();
     };
     useEffect(() => {
