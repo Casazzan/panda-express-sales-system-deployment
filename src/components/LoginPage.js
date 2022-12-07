@@ -3,7 +3,7 @@ import '../index2.css';
 import HomePageNavButton from './HomePageNavButton';
 
 import { useNavigate } from 'react-router-dom';
-import { GoogleLogin } from 'react-google-login';
+// import { GoogleLogin } from 'react-google-login';
 import { gapi } from 'gapi-script';
 const clientId = '569817754455-gefflnacglb4mubcrlp94bqknusirsld.apps.googleusercontent.com';
 
@@ -50,7 +50,7 @@ const LoginPage = () => {
     return (
       <div class = "HomePageScreen">
             <div class = "homeLogo"></div>
-            <GoogleLogin
+            {/* <GoogleLogin
             clientId={clientId}
             render={renderProps => (
             <button class = "HomePageButton" id = "customer" onClick={renderProps.onClick}>Login</button>
@@ -59,7 +59,7 @@ const LoginPage = () => {
             onSuccess={onSuccessOther}
             onFailure={onFailure}
             cookiePolicy={'none'}
-            />
+            /> */}
           {/* <div class = "HomePageButton" id = "Login" onClick={() => {navigate("/View")}}><HomePageNavButton Name = "Login" /></div> */}
           <div class = "HomePageButton" id = "Public" onClick={() => {navigate("/CustMainPage")}}><HomePageNavButton Name = "Public View" /></div>
       </div>
