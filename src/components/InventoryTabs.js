@@ -3,6 +3,7 @@ import "../App.css";
 import Critical from './CriticalItemsDisplay'
 import Summary from './InventoryDisplay'
 import InventorySelector from './InventorySelector'
+import axios from 'axios'
 
 // https://www.w3schools.com/html/html_tables.asp
 // table 
@@ -19,6 +20,86 @@ function InventoryTabs() {
   const [updateItemAmount, setUpdateItemAmount] = useState('0');
   const [criticalItems, setCriticalResponse] = useState('0');
   const [inventorySummary, setInventorySummary] = useState('0');
+  const [translations, setTranslations] = useState([
+    { translatedText: "View Inventory" }, 
+    { translatedText: "Current Inventory" }, 
+    { translatedText: "Critical Items" }, 
+    { translatedText: "Add New Item" }, 
+    { translatedText: "Enter Name" }, 
+    { translatedText: "Enter Price" }, 
+    { translatedText: "Enter Initial Amount" }, 
+    { translatedText: "Enter Default Value to Restock to" }, 
+    { translatedText: "Enter Critical Inventory Threshold" }, 
+    { translatedText: "Enter Type" }, 
+    { translatedText: "Add Item" }, 
+    { translatedText: "Update Values" }, 
+    { translatedText: "Restock Options" }, 
+    { translatedText: "Restock All" }, 
+    { translatedText: "Restock Critical" }, 
+    { translatedText: "Manually Update Inventory" }, 
+    { translatedText: "Select Item to Change" }, 
+    { translatedText: "Input New Amount" }, 
+    { translatedText: "Submit" }, 
+    { translatedText: "Delete" } 
+  ]);
+  const changeLanguage = () => {
+    // var selected = document.getElementById("selectedLanguageDiv").innerHTML;
+    if (JSON.parse(localStorage.getItem("language")) != "en") {
+      const encodedParams = new URLSearchParams();
+      encodedParams.append("q", "View Inventory");
+      encodedParams.append("q", "Current Inventory");
+      encodedParams.append("q", "Critical Items");
+      encodedParams.append("q", "Add New Item");
+      encodedParams.append("q", "Enter Name");
+      encodedParams.append("q", "Enter Price");
+      encodedParams.append("q", "Enter Initial Amount");
+      encodedParams.append("q", "Enter Default Value to Restock to");
+      encodedParams.append("q", "Enter Critical Inventory Threshold");
+      encodedParams.append("q", "Enter Type");
+      encodedParams.append("q", "Add Item");
+      encodedParams.append("q", "Update Value");
+      encodedParams.append("q", "Restock Options");
+      encodedParams.append("q", "Restock All");
+      encodedParams.append("q", "Restock Critical");
+      encodedParams.append("q", "Manually Update Inventory");
+      encodedParams.append("q", "Select Item to Change");
+      encodedParams.append("q", "Input New Amount");
+      encodedParams.append("q", "Submit");
+      encodedParams.append("q", "Delete");
+      encodedParams.append("target", JSON.parse(localStorage.getItem("language")));
+      encodedParams.append("source", "en");
+
+      const options = {
+        method: 'POST',
+        url: 'https://google-translate1.p.rapidapi.com/language/translate/v2',
+        headers: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'Accept-Encoding': 'application/gzip',
+          'X-RapidAPI-Key': '8fbc873fd8msh5d43e6022f22f64p15f17ejsnbb456384ba17',
+          'X-RapidAPI-Host': 'google-translate1.p.rapidapi.com'
+        },
+        data: encodedParams
+      };
+
+      axios.request(options).then(function (response) {
+          const translatedArray = response.data.data.translations
+          // console.log("Within OrderHistory Display: ", response.data.data.translations)
+          // console.log("Specific Element: ", translations[0].translatedText)
+          setTranslations(translatedArray)
+          // console.log("Test", translations)
+          
+      }).catch(function (error) {
+          console.error(error);
+      });
+    }
+    else {
+      console.log("english")
+    }
+  }
+
+  useEffect(() => {    
+    changeLanguage()
+  }, [setTranslations]);
 
 
   const toggleTab = (index) => {
@@ -116,19 +197,19 @@ function InventoryTabs() {
           className={toggleState === 1 ? "tabs active-tabs" : "tabs"}
           onClick={() => toggleTab(1)}
         >
-        View Inventory
+        { translations[0].translatedText }
         </button>
         <button
           className={toggleState === 2 ? "tabs active-tabs" : "tabs"}
           onClick={() => toggleTab(2)}
         >
-        Add New Item
+        { translations[3].translatedText } 
         </button>
         <button
           className={toggleState === 3 ? "tabs active-tabs" : "tabs"}
           onClick={() => toggleTab(3)}
         >
-        Update Values
+        { translations[11].translatedText }
         </button>
       </div>
 
@@ -136,11 +217,11 @@ function InventoryTabs() {
         <div
           className={toggleState === 1 ? "content  active-content" : "content"}
         >
-          <h2>Current Inventory</h2>
+          <h2> { translations[1].translatedText } </h2>
 
           <Summary inventoryList={inventorySummary}/>
           <p></p>
-          <h2>Critical Items</h2>
+          <h2> { translations[2].translatedText } </h2>
           <Critical itemList={criticalItems}/>
           <p></p>
       </div>
@@ -151,12 +232,12 @@ function InventoryTabs() {
           <h2>Add Inventory Item</h2>
           <hr />
           <p></p>
-            <label> Enter Name </label>
+            <label> { translations[4].translatedText } </label>
             <input type="text" name="name" 
                   onChange={inputchangehandler} 
                   value = {name}/>
             <p></p>
-            <label> Enter Price </label>
+            <label> { translations[5].translatedText } </label>
             <input
               type="number"
               required
@@ -164,7 +245,7 @@ function InventoryTabs() {
               onChange={(e) => setPrice(e.target.value)}
             />
             <p></p>
-            <label> Enter Initial Amount </label>
+            <label> { translations[6].translatedText } </label>
             <input
               type="number"
               required
@@ -172,7 +253,7 @@ function InventoryTabs() {
               onChange={(e) => setInitial(e.target.value)}
             />
             <p></p>
-            <label> Enter Default Number to Restock To </label>
+            <label> { translations[7].translatedText }</label>
             <input
               type="number"
               required
@@ -180,7 +261,7 @@ function InventoryTabs() {
               onChange={(e) => setRestock(e.target.value)}
             />
             <p></p>
-            <label> Enter Critical Inventory Threshold </label>
+            <label> { translations[8].translatedText } </label>
             <input
               type="number"
               required
@@ -188,7 +269,7 @@ function InventoryTabs() {
               onChange={(e) => setCritical(e.target.value)}
             />
             <p></p>
-            <label> Enter Type </label>
+            <label> { translations[9].translatedText } </label>
             <select
               value={type}
               onChange={(e) => setType(e.target.value)}
@@ -201,7 +282,7 @@ function InventoryTabs() {
             <button 
               className="SubmitButton"
               onClick={() => addItem()}>
-              Add Item
+              { translations[10].translatedText } 
             </button>
             <p>
             </p>
@@ -210,19 +291,19 @@ function InventoryTabs() {
         <div
           className={toggleState === 3 ? "content  active-content" : "content"}
         >
-          <h2>Restock Options</h2>
+          <h2> { translations[12]. translatedText } </h2>
             <p></p>
-            <button className="SubmitCritical">Restock All</button>
+            <button className="SubmitCritical"> { translations[13].translatedText } </button>
             <p></p>
-            <button className="SubmitCritical">Restock Critical</button>
+            <button className="SubmitCritical"> {translations[14].translatedText } </button>
             <p></p>
           <hr />
-          <h2>Manually Update Inventory</h2>
-            <label>Select Item to Change: </label>
+          <h2> { translations[15].translatedText } </h2>
+            <label> { translations[16].translatedText } </label>
             <InventorySelector 
               rosterList={inventorySummary}/>
             <p></p>
-            <label>Input New Amount: </label>
+            <label> { translations[17].translatedText } </label>
             <input
               type="number"
               required
@@ -234,12 +315,12 @@ function InventoryTabs() {
               className="SubmitCritical"
               onClick={() => updateServings()}
               id="update"
-              >Submit</button>
+              >{ translations[18].translatedText }</button>
             <button 
               className="SubmitCritical"
               onClick={() => deleteItem()}
               id="delete"
-              >Delete</button>
+              > { translations[19].translatedText } </button>
         </div>
       </div>
     </div>
