@@ -52,7 +52,7 @@ const MenuContainer = (props) => {
             encodedParams.append("q", "Honey Walnut Shrimp");
             encodedParams.append("q", "Mushroom Chicken");
             encodedParams.append("q", "Eggplant Tofu");
-            encodedParams.append("target", "nl");
+            encodedParams.append("target", JSON.parse(localStorage.getItem("language")));  
             encodedParams.append("source", "en");
       
             const options = {

@@ -24,7 +24,7 @@ const Apps = (props) => {
             const encodedParams = new URLSearchParams();
             encodedParams.append("q", "Chicken Egg Roll");
             encodedParams.append("q", "Crispy Shrimp");
-            encodedParams.append("target", "nl");
+            encodedParams.append("target", JSON.parse(localStorage.getItem("language")));  
             encodedParams.append("source", "en");
       
             const options = {

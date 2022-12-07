@@ -34,7 +34,7 @@ const Sides = (props) => {
         encodedParams.append("q", "Fried Rice");
         encodedParams.append("q", "White Steamed Rice");
         encodedParams.append("q", "Brown Steamed Rice");
-        encodedParams.append("target", "nl");
+        encodedParams.append("target", JSON.parse(localStorage.getItem("language")));  
         encodedParams.append("source", "en");
   
         const options = {

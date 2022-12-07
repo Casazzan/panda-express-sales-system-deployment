@@ -97,7 +97,8 @@ router.get('/price', async (req, res) => {
 
     for(let i = 0; i < itemList.length; i++) {
         let item = itemList[i];
-        if(item.food_type === 'entree') entrees.push(item);
+        if (item.food_type === 'undefined') entrees.push(item);
+        else if(item.food_type === 'entree') entrees.push(item);
         else if(item.food_type === 'side') sides.push(item);
         else appetizers.push(item);
     }

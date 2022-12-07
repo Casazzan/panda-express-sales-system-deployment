@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./header";
-import MenuCont from "./MenuContainer";
+import MenuCont from "./menuContainer";
 import Entrees from "./entrees";
 import Sides from "./sides";
 import Appetizers from "./apps";
