@@ -13,7 +13,7 @@ const cors = require("cors");
 
 // Create express app
 const app = express();
-const port = 5001;
+const port = 5002;
 // Create pool
 const pool = new Pool({
     user: process.env.PSQL_USER,

@@ -2,16 +2,16 @@ import React, { Component } from 'react'
 import "../index.css"
 
 var callAPIAsyncGetPrice = async (dishId, idString) => {
-    //console.log((await (await fetch(`http://localhost:5001/dish_list/price?dish_id=${dishId}${idString}`)).json()));
-    const promise = fetch(`http://localhost:5001/dish_list/price?dish_id=${dishId}${idString}`);
+    //console.log((await (await fetch(`http://localhost:5002/dish_list/price?dish_id=${dishId}${idString}`)).json()));
+    const promise = fetch(`http://localhost:5002/dish_list/price?dish_id=${dishId}${idString}`);
     const response = await promise;
     const result = await response.json();
     return result.price;
 }
 
 var addToOrderHistory = async (dishId, idString) => {
-    //console.log((await (await fetch(`http://localhost:5001/dish_list/price?dish_id=${dishId}${idString}`)).json()));
-    const promise = fetch(`http://localhost:5001/order_history/price?dish_id=${dishId}${idString}`);
+    //console.log((await (await fetch(`http://localhost:5002/dish_list/price?dish_id=${dishId}${idString}`)).json()));
+    const promise = fetch(`http://localhost:5002/order_history/price?dish_id=${dishId}${idString}`);
 }
 
 const returnPrice = async (MyListOfOrders) => {
@@ -147,11 +147,11 @@ const orderTheItems = async (MyListOfOrders) => {
         }
 
         // var sidesResultString = "";
-        var nextID = (await (await fetch("http://localhost:5001/order_history/nextID")).json()).nextID;
+        var nextID = (await (await fetch("http://localhost:5002/order_history/nextID")).json()).nextID;
         var price = await returnPrice(JSON.parse(localStorage.getItem('CurrentOrder')));
         var date = "2022-10-25";
         console.log(`Order Sending: transaction_id=${nextID}&employee_id=0&date=${date}&type_of_dish=${dishtype}&entree_dish=${entreesResultString}&entree_amt_servings=${entreesAmountResultString}&side_ingredients=${sidesResultString}&side_amt_servings=${sidesAmountResultString}&appetizer_ingredients=${appetizersResultString}&appetizer_amt_servings=${appetizersAmountResultString}&price=${price}`);
-        await fetch(`http://localhost:5001/order_history/add?transaction_id=${nextID}&employee_id=-1&date=${date}&type_of_dish=${dishtype}&entree_dish=${entreesResultString}&entree_amt_servings=${entreesAmountResultString}&side_ingredients=${sidesResultString}&side_amt_servings=${sidesAmountResultString}&appetizer_ingredients=${appetizersResultString}&appetizer_amt_servings=${appetizersAmountResultString}&price=${price}`);
+        await fetch(`http://localhost:5002/order_history/add?transaction_id=${nextID}&employee_id=-1&date=${date}&type_of_dish=${dishtype}&entree_dish=${entreesResultString}&entree_amt_servings=${entreesAmountResultString}&side_ingredients=${sidesResultString}&side_amt_servings=${sidesAmountResultString}&appetizer_ingredients=${appetizersResultString}&appetizer_amt_servings=${appetizersAmountResultString}&price=${price}`);
         console.log("Sent");
     }
 }

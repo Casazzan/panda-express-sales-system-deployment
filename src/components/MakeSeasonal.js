@@ -9,8 +9,8 @@ class MakeSeasonal extends React.Component {
     }
 
     callAPIAsyncGetSeasonal = async () => {
-        //console.log((await (await fetch(`http://localhost:5001/dish_list/price?dish_id=${dishId}${idString}`)).json()));
-        const promise = fetch(`http://localhost:5001/inventory/seasonal_items`);
+        //console.log((await (await fetch(`http://localhost:5002/dish_list/price?dish_id=${dishId}${idString}`)).json()));
+        const promise = fetch(`http://localhost:5002/inventory/seasonal_items`);
         const response = await promise;
         const result = await response.json();
         return result;
