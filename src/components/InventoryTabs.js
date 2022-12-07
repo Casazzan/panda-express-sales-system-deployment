@@ -127,7 +127,7 @@ function InventoryTabs() {
 
 
   const queryCrit = async() => {
-    const promise = fetch(`http://localhost:5002/report/restock`); 
+    const promise = fetch(`http://localhost:5003/report/restock`); 
     const response = await promise;
     const result = await response.json();
     console.log(result);
@@ -137,7 +137,7 @@ function InventoryTabs() {
   const updateServings = async() => {
     var selected = document.getElementById("selectedItemDiv").innerHTML;
     if (selected != "") {
-      const promise = fetch(`http://localhost:5002/inventory/update_servings?id=${selected}&servings=${updateItemAmount}`); 
+      const promise = fetch(`http://localhost:5003/inventory/update_servings?id=${selected}&servings=${updateItemAmount}`); 
       const response = await promise;
       setUpdateItemAmount(0);
     }
@@ -148,7 +148,7 @@ function InventoryTabs() {
     /*
     TODO fix after edited
     if (selected != "") {
-      const promise = fetch(`http://localhost:5002/inventory/delete?id=${selected}`); 
+      const promise = fetch(`http://localhost:5003/inventory/delete?id=${selected}`); 
       const response = await promise;
       setUpdateItemAmount(0);
     }
@@ -156,7 +156,7 @@ function InventoryTabs() {
   };
 
   const queryInventory = async() => {
-    const promise = fetch(`http://localhost:5002/inventory/summary`); 
+    const promise = fetch(`http://localhost:5003/inventory/summary`); 
     const response = await promise;
     const result = await response.json();
     console.log(result);
@@ -164,7 +164,7 @@ function InventoryTabs() {
   };
 
   const restockInventory = async() => {
-    const promise = fetch(`http://localhost:5002/inventory/summary`); 
+    const promise = fetch(`http://localhost:5003/inventory/summary`); 
     const response = await promise;
     const result = await response.json();
     console.log(result);
@@ -174,12 +174,12 @@ function InventoryTabs() {
   // reset values to 0
   // setname ... 0
   const addItem = async() => {
-    const firstPromise = fetch(`http://localhost:5002/inventory/nextID`); 
+    const firstPromise = fetch(`http://localhost:5003/inventory/nextID`); 
     const firstResponse = await firstPromise;
     const result = await firstResponse.json();
     var newID = result.nextID;
     console.log("inserting "+ name, newID, price, initial, restock, critical, type);
-    const promise = fetch(`http://localhost:5002/inventory/add?id=${newID}&name=${name}&servings=${initial}&restock_quantity=${restock}&price=${price}&food_type=${type}&minimum_amount=${critical}`); 
+    const promise = fetch(`http://localhost:5003/inventory/add?id=${newID}&name=${name}&servings=${initial}&restock_quantity=${restock}&price=${price}&food_type=${type}&minimum_amount=${critical}`); 
     const response = await promise;
     setName("");
     setPrice(0);

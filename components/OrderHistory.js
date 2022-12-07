@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import "../index.css"
 
 // var callAPIAsyncNameToID = async (itemName) => {
-//     (await fetch(`http://localhost:5002/inventory/${itemName}`)).text();
+//     (await fetch(`http://localhost:5003/inventory/${itemName}`)).text();
 // }
 
 var callAPIAsyncGetOrderHistory = async () => {
-    //console.log((await (await fetch(`http://localhost:5002/dish_list/price?dish_id=${dishId}${idString}`)).json()));
-    const promise = fetch(`http://localhost:5002/order_history/summmary`);
+    //console.log((await (await fetch(`http://localhost:5003/dish_list/price?dish_id=${dishId}${idString}`)).json()));
+    const promise = fetch(`http://localhost:5003/order_history/summmary`);
     const response = await promise;
     const result = await response.json();
     return result.orderHistory;

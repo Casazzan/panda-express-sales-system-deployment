@@ -17,33 +17,33 @@ const pool = new Pool({
 /**
  * - Single Employee Query <br>
  * Route: /roster?id={id} <br>
- * Ex: http://localhost:5002/roster?id=3 <br>
+ * Ex: http://localhost:5003/roster?id=3 <br>
  * Ex Response: {"employee_id":3,"employee_name":"Jackie Wells","is_manager":false} <br>
  *  <br>
  * - Get Full Roster <br>
  * Route: /roster/summary <br>
- * Ex: http://localhost:5002/roster/summary <br>
+ * Ex: http://localhost:5003/roster/summary <br>
  * Ex Response: \[{"employee_id":3,"employee_name":"Jackie Wells","is_manager":false},...\] <br>
  *  <br>
  * - Delete Employee <br>
  * Route: /roster/delete?id={employee_id} <br>
- * Ex: http://localhost:5002/roster/delete?id=4 <br>
+ * Ex: http://localhost:5003/roster/delete?id=4 <br>
  * Ex Response: No response <br>
  * Note: '%20' represents a space in the database entry <br>
  *  <br>
  * - Add Employee  <br>
  * Route: roster/add?id={id}&name={employee_name}}&manager={1 for manager, 0 for not} <br>
- * Ex: http://localhost:5002/roster/add?id=3&name=Jackie%20Wells&manager=0 <br>
+ * Ex: http://localhost:5003/roster/add?id=3&name=Jackie%20Wells&manager=0 <br>
  * Ex Response: No response <br>
  *  <br>
  * - Get Next Available Employee ID <br>
  * Route: /roster/nextID <br>
- * Ex: http://localhost:5002/roster/nextID <br>
+ * Ex: http://localhost:5003/roster/nextID <br>
  * Ex Response: {"nextID":11} <br>
  *  <br>
  * - Update Type (Manager/Not) By Employee ID <br>
  * Route: /roster/update_type?id={employee_id}&manager={1 for manager, 0 for not} <br>
- * Ex: http://localhost:5002/roster/update_type?id=4&manager=1 <br>
+ * Ex: http://localhost:5003/roster/update_type?id=4&manager=1 <br>
  * Ex Response: No Response
  * @module
  */

@@ -46,8 +46,8 @@ class CustomerViewContainer extends React.Component {
      * @returns {double} The price of the dish passed in.
      */
     callAPIAsyncGetPrice = async (dishId, idString) => {
-        //console.log((await (await fetch(`http://localhost:5002/dish_list/price?dish_id=${dishId}${idString}`)).json()));
-        const promise = fetch(`http://localhost:5002/dish_list/price?dish_id=${dishId}${idString}`);
+        //console.log((await (await fetch(`http://localhost:5003/dish_list/price?dish_id=${dishId}${idString}`)).json()));
+        const promise = fetch(`http://localhost:5003/dish_list/price?dish_id=${dishId}${idString}`);
         const response = await promise;
         const result = await response.json();
         return result.price;
